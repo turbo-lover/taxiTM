@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/background">
+
+   <ImageView 
+       android:id="@+id/LayChoice_img_d_orange_btn"
+       
+       android:layout_width="150dp"
+       android:layout_height="150dp"
+       android:contentDescription="@string/description"
+       android:layout_centerHorizontal="true"
+       
+       android:src="@drawable/choice_dark_orange_button"
+       />
+   <ImageView
+       android:id="@+id/LayChoice_txt"
+       
+       android:layout_height="60dp"
+       android:layout_width="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:contentDescription="@string/description"
+       android:layout_below="@+id/LayChoice_img_d_orange_btn"
+       
+       android:src="@drawable/enter_text_bottom"
+       
+        />
+   <ImageView 
+       android:id="@+id/LayChoice_img_green"
+       
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:contentDescription="@string/description"
+       android:layout_centerHorizontal="true"
+       android:layout_below="@+id/LayChoice_txt"
+       
+       android:src="@drawable/choice_green_button" 
+       />
+   <ImageView
+       android:id="@+id/LayChoice_img_orange_btn"
+       
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:layout_marginRight="10dp"
+       android:contentDescription="@string/description"
+       android:layout_below="@+id/LayChoice_img_green"
+       android:layout_toLeftOf="@+id/LayChoice_anckor"
+       
+       android:src="@drawable/choice_orange_button"
+       />
+   
+   <TextView
+       android:id="@+id/LayChoice_anckor"
+       android:layout_width="0dp"
+       android:layout_height="0dp"
+         android:layout_centerInParent="true" />
+   
+   <ImageView
+       android:id="@+id/LayChoice_img_red_btn"
+       
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:layout_marginLeft="10dp"
+       android:contentDescription="@string/description"
+       android:layout_below="@+id/LayChoice_img_green"
+       android:layout_toRightOf="@+id/LayChoice_anckor"
+       
+       android:src="@drawable/choice_red_button"
+       />
+   
+   
+    
+</RelativeLayout>

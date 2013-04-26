@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   
+    android:background="@drawable/dark_back" >
+<!-- - - - - - - - - -ЗАГОЛОВОК - - - - - - - - -  -->
+    <EditText 
+        android:id="@+id/LayOrder_ancor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"/>
+    
+   	<ImageView
+   	    android:id="@+id/LayOrder_img_captio_car"
+   	    android:layout_width="40dp"
+   	    android:layout_height="40dp"
+   	    android:layout_alignWithParentIfMissing="false"
+   	    android:layout_toLeftOf="@+id/ImageView01"
+   	    android:layout_marginTop="35dp"
+   	    android:layout_marginRight="20dp"
+   	    android:background="@drawable/order_caption_img_car"
+   	    android:contentDescription="@string/description" />
+   	  <ImageView
+   	        android:id="@+id/ImageView01"
+   	        android:layout_width="100dp"
+   	        android:layout_height="18dp"
+   	        android:layout_alignTop="@+id/LayOrder_img_captio_car"
+   	        android:layout_marginTop="14dp"
+   	        android:layout_toRightOf="@+id/LayOrder_ancor"
+   	        android:background="@drawable/order_caption_img_txt"
+   	        android:contentDescription="@string/description" />
+<!-- - - - - - - - - КОНЕЦ ЗАГОЛОВКА - - - - - - - - -  -->
+
+
+   	<EditText
+   	    android:id="@+id/LayOrder_ed_txt_city"
+   	    android:layout_width="270dp"
+   	    android:layout_height="30dp"
+   	    android:layout_below="@+id/LayOrder_img_captio_car"
+   	    android:layout_marginTop="8dp"
+   	    
+   	    android:layout_centerHorizontal="true"
+   	    android:background="@drawable/spinner_input"
+   	    android:hint="Ваш город" />
+   	
+   		
+   	
+					   	<ImageView 
+					   	    android:id="@+id/LayOrder_star_city"
+					   	     
+					   	    android:layout_height="8dp"
+					        android:layout_width="8dp"
+					      	android:layout_toRightOf="@+id/LayOrder_ed_txt_city"
+					        android:layout_below="@+id/LayOrder_img_captio_car"
+					        android:contentDescription="@string/description"
+					        
+					   	    android:background="@drawable/star_white"
+							/>
+					   	
+   	    <EditText
+   	        android:id="@+id/LayOrder_ed_txt_taxi_serv"
+   	        android:layout_width="220dp"
+   	        android:layout_height="30dp"
+   	        android:layout_below="@+id/LayOrder_ed_txt_city"
+   	       
+   	        android:layout_marginTop="10dp"
+   	       android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
+   	        android:background="@drawable/spinner_input"
+   	        android:hint="Выбор службы такси" />
+
+				   	    <ImageView
+				   	        android:id="@+id/LayOrder_btn_hint_telephone"
+				   	        android:layout_width="40dp"
+				   	        android:layout_height="40dp"
+				   	        android:layout_below="@+id/LayOrder_ed_txt_city"
+				   	        android:layout_marginLeft="5dp"
+				   	        android:layout_marginTop="5dp"
+				   	        android:layout_centerHorizontal="true"
+				   	        android:layout_toRightOf="@+id/LayOrder_ed_txt_taxi_serv"
+				   	        android:background="@drawable/order_telphone_btn"
+				   	        android:contentDescription="@string/description" />
+				   	    
+							   	    	<ImageView 
+								   	    android:id="@+id/LayOrder_star_serv"
+								   	     
+								   	    android:layout_height="8dp"
+								        android:layout_width="8dp"
+								      	android:layout_toRightOf="@+id/LayOrder_btn_hint_telephone"
+								        android:layout_alignTop="@+id/LayOrder_btn_hint_telephone"
+								        android:contentDescription="@string/description"
+								        
+								   	    android:background="@drawable/star_white"
+										/>
+   	        
+   	    <EditText
+   	        android:id="@+id/LayOrder_ed_txt_from"
+   	        android:layout_width="220dp"
+   	        android:layout_height="30dp"
+   	        android:layout_below="@+id/LayOrder_btn_hint_telephone"
+   	        android:layout_marginTop="5dp"
+   	       	android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
+   	        android:background="@drawable/spinner_input"
+   	        android:hint="Откуда ехать?" />
+   	    
+				   	    <EditText
+				   	    android:id="@+id/LayOrder_ed_txt_from_number"
+				   	    android:layout_width="45dp"
+				   	    android:layout_height="30dp"
+				   	    android:layout_alignTop="@+id/LayOrder_ed_txt_from"
+				   	    android:layout_alignRight="@+id/LayOrder_ed_txt_city"
+				   	    android:layout_marginLeft="5dp"
+				   	    android:inputType="number"
+				   	    android:textSize="11sp"
+				   	    android:layout_toRightOf="@+id/LayOrder_ed_txt_from"
+				   	    android:background="@drawable/text_input"
+				   	    android:hint="№" />
+				   	    
+				   	    				<ImageView 
+								   	    android:id="@+id/LayOrder_star_from"
+								   	     
+								   	    android:layout_height="8dp"
+								        android:layout_width="8dp"
+								      	android:layout_toRightOf="@+id/LayOrder_ed_txt_from_number"
+								        android:layout_below="@+id/LayOrder_btn_hint_telephone"
+								        android:contentDescription="@string/description"
+								        
+								        
+								   	    android:background="@drawable/star_white"
+										/>
+   	    
+   	    <ImageView
+   	        android:id="@+id/LayOrder_btn_from_home"
+   	        android:layout_width="40dp"
+   	        android:layout_height="50dp"
+   	        android:layout_below="@+id/LayOrder_ed_txt_from"
+   	        android:layout_centerHorizontal="true"
+   	        android:layout_marginTop="8dp"
+   	        android:background="@drawable/order_to_home_btn" />
+   	    
+   	    <EditText
+   	        android:id="@+id/LayOrder_ed_txt_to"
+   	        android:layout_width="220dp"
+   	        android:layout_height="30dp"
+   	        android:layout_below="@+id/LayOrder_btn_from_home"
+   	        android:layout_marginTop="8dp"
+   	        android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
+   	        android:background="@drawable/spinner_input" 
+   	        android:hint="Куда ехать?" 
+   	        />
+   	    					
+				   	    <EditText
+				   	    android:id="@+id/LayOrder_ed_txt_to_number"
+				   	    android:layout_width="45dp"
+				   	    android:layout_height="30dp"
+				   	    android:layout_alignTop="@+id/LayOrder_ed_txt_to"
+				   	    android:layout_alignRight="@+id/LayOrder_ed_txt_city"
+				   	    android:layout_marginLeft="5dp"
+				   	    android:inputType="number"
+				   	    android:textSize="11sp"
+				   	    android:layout_toRightOf="@+id/LayOrder_ed_txt_to"
+				   	    android:background="@drawable/text_input"
+				   	    android:hint="№" />
+				   	    
+				   	    				<ImageView 
+								   	    android:id="@+id/LayOrder_star_to"
+								   	     
+								   	    android:layout_height="8dp"
+								        android:layout_width="8dp"
+								      	android:layout_toRightOf="@+id/LayOrder_ed_txt_to_number"
+								        android:layout_below="@+id/LayOrder_btn_from_home"
+								        android:contentDescription="@string/description"
+								        
+								        
+								   	    android:background="@drawable/star_white"
+										/>
+   	    				
+   	   
+
+   	    <ImageView
+   	        android:id="@+id/LayOrder_btn_to_home"
+   	        android:layout_width="28dp"
+   	        android:layout_height="38dp"
+   	        android:layout_below="@+id/LayOrder_ed_txt_to"
+   	        android:layout_centerHorizontal="true"
+   	        android:layout_marginTop="5dp"
+   	        android:background="@drawable/order_to_home_btn" />
+
+   	    <EditText
+   	        android:id="@+id/LayOrder_ed_txt_comment"
+   	        android:layout_width="270dp"
+   	        android:layout_height="30dp"
+ 
+   	        android:layout_below="@+id/LayOrder_btn_to_home"
+   	      
+   	        android:layout_marginTop="8dp"
+   	       android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
+   	        android:background="@drawable/spinner_input"
+   	        android:hint="Коментарии" 
+   	        />
+
+
+   	    <EditText
+   	        android:id="@+id/LayOrder_ed_txt_number"
+   	        android:layout_width="270dp"
+   	        android:layout_height="30dp"
+			android:inputType="number"
+   	        android:layout_below="@+id/LayOrder_ed_txt_comment"
+   	      
+   	        android:layout_marginTop="8dp"
+   	        android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
+   	        android:background="@drawable/spinner_input" 
+   	        android:hint="Телефон" 
+   	        />
+   	    					<ImageView 
+								   	    android:id="@+id/LayOrder_star_number"
+								   	     
+								   	    android:layout_height="8dp"
+								        android:layout_width="8dp"
+								      	android:layout_toRightOf="@+id/LayOrder_ed_txt_number"
+								        android:layout_below="@+id/LayOrder_ed_txt_comment"
+								        android:contentDescription="@string/description"
+								        
+								        
+								   	    android:background="@drawable/star_white"
+										/>   	    
+   	    <ImageView
+   	        android:layout_width="70dp"
+   	        android:layout_height="70dp"
+   	        android:layout_alignLeft="@+id/LayOrder_btn_hint_telephone"
+   	        android:layout_below="@+id/LayOrder_ed_txt_number"
+   	        android:layout_marginTop="2dp"
+   	        android:background="@drawable/order_ord_tx_btn"
+   	        android:onClick="OrderButton_click" />
+	
+</RelativeLayout>

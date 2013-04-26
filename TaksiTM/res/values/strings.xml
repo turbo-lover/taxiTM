@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TaksiTM</string>
+    <string name="action_settings">Settings</string>
+    <string name="description" />
+    <string name="request_pass"><u>Отправить смс с кодом подтверждения</u></string>
+    <string name="btn_main1_registr"><u>зарегистрироваться</u></string>
+    <string name="btn_main1_enter"><u>вход</u></string>
+    <string name="ed_txt_name">Телефон</string>
+    <string name="ed_txt_pass">Пароль</string>
+    <string name="lay_ent_btn_enter">ВХОД</string>
+    <string name="title_activity_order_layout">OrderLayout</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_confirm_layout">ConfirmLayout</string>
+
+</resources>

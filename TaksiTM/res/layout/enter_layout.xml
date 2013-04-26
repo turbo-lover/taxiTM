@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" 
+ >
+    
+    <ImageView 
+        android:id="@+id/LayEnter_img_circle"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/circle"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:contentDescription="@string/description"
+        />
+    <EditText 
+        android:id="@+id/LayEnter_txt_number"
+       	android:inputType="phone"
+       	android:layout_centerHorizontal="true"
+       	android:layout_height="30dp"
+       	android:layout_width="160dp"
+       	android:layout_marginTop="160dp"
+       	android:layout_alignTop="@+id/LayEnter_img_circle"
+       	android:background="@drawable/text_input"
+       	android:hint="@string/ed_txt_name"
+       	
+        />
+      <EditText 
+        android:id="@+id/LayEnter_txt_pass"
+       	android:inputType="number"
+       	android:layout_height="30dp"
+       	android:layout_width="160dp"
+       	android:layout_marginTop="10dp"
+       	android:layout_below="@+id/LayEnter_txt_number"
+       	android:layout_alignLeft="@+id/LayEnter_txt_number"
+       	android:background="@drawable/text_input"
+       	android:hint="@string/ed_txt_pass"
+        />
+      
+      <Button
+          android:id="@+id/LayEnter_btn_login"
+          android:layout_width="180dp"
+          android:layout_height="50dp"
+          android:layout_below="@+id/LayEnter_img_circle"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="45dp"
+          android:background="@drawable/button_shape_1"
+          android:text="@string/lay_ent_btn_enter"
+          android:textSize="30sp" 
+          style="@style/OrangeButton"
+          android:onClick="ent_buttonClick"/>
+      
+      <ImageView 
+           android:id="@+id/LayEnter_img_text_bottom"          
+           android:layout_below="@+id/LayEnter_btn_login"
+           android:layout_marginTop="10dp"
+           android:layout_centerHorizontal="true"
+           android:src="@drawable/enter_text_bottom"
+           android:layout_height="wrap_content"
+           android:layout_width="180dp"
+           android:contentDescription="@string/description"
+           
+          />
+    
+    
+
+</RelativeLayout>
