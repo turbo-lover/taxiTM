@@ -74,6 +74,7 @@ public final class R {
         public static final int LayEnter_img_text_bottom=0x7f090030;
         public static final int LayEnter_txt_number=0x7f09002d;
         public static final int LayEnter_txt_pass=0x7f09002e;
+        public static final int LayMain_txt_street=0x7f090014;
         public static final int LayOrder_ancor=0x7f090031;
         public static final int LayOrder_btn_from_home=0x7f09003b;
         public static final int LayOrder_btn_hint_telephone=0x7f090036;
@@ -109,7 +110,6 @@ public final class R {
         public static final int linear_parent=0x7f090004;
         public static final int request_pass=0x7f090009;
         public static final int spiner_city=0x7f090011;
-        public static final int spiner_street=0x7f090014;
         public static final int star1=0x7f090007;
         public static final int star2=0x7f09000c;
         public static final int star3=0x7f09000f;

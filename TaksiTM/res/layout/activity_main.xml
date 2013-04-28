@@ -223,13 +223,15 @@
 						         android:orientation="horizontal" 
 						         >
        													
-		            									<Spinner
-           														android:id="@+id/spiner_street"
+		            									<MultiAutoCompleteTextView
+           														android:id="@+id/LayMain_txt_street"
+           														
             													android:layout_weight="4"
 																android:inputType="text"
             													android:layout_height="30dp"
             													android:layout_width="match_parent" 		
           														android:background="@drawable/spinner_input"
+          														
           														
           														/>
        													
