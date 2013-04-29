@@ -11,12 +11,12 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
 
 import com.example.taksitm.DatabaseHelp;
@@ -26,55 +26,19 @@ import com.example.taksitm.Validation;
 
 public class MainActivity extends Activity implements TextWatcher
 {
-	static
-	{
-		System.loadLibrary("android_sqlite");
-	}
-	String[] data = { "one", "two", "three", "four", "five" };
 
 	Boolean flag;
-	String[] mContacts = { "one", "two", "three", "four", "five" };
-
-	private List<String> _getStreets(String str)
-	{
-
-		List<String> strings = new ArrayList<String>();
-		DatabaseHelp dbhelper = new DatabaseHelp(getBaseContext());
-		try
-		{
-			dbhelper.createDataBase();
-			dbhelper.openDataBase();
-		}
-		catch (Exception e)
-		{
-
-			return null;
-		}
-		Cursor cur = dbhelper.getStreetName(str);
-
-		cur.moveToFirst();
-		while (cur.moveToNext())
-		{
-
-			strings.add(cur.getString(0));
-
-		}
-		cur.close();
-		return strings;
-	}
+	String[] mContacts = {};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		flag = false;
-
 		AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
 		mAutoComplete.addTextChangedListener(this);
-		mAutoComplete.setAdapter(new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mContacts));
+		flag = false;
 
 		if (Validation.isOnline(this) == false)
 		{
@@ -189,28 +153,79 @@ public class MainActivity extends Activity implements TextWatcher
 
 	}
 
+	private List<String> _getStreets(String str)
+	{
+
+		List<String> strings = new ArrayList<String>();
+		DatabaseHelp dbhelper = new DatabaseHelp(getBaseContext());
+		try
+		{
+			dbhelper.createDataBase();
+			dbhelper.openDataBase();
+		}
+		catch (Exception e)
+		{
+
+			return null;
+		}
+
+		Cursor cur = dbhelper.getStreetName(str);
+
+		try
+		{
+			if (cur.moveToFirst())
+			{
+				do
+				{
+					strings.add(cur.getString(0));
+					cur.moveToNext();
+				} while (cur.isAfterLast() == false);
+
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			Log.wtf("курсор", e.toString());
+		}
+
+		cur.close();
+		return strings;
+	}
+
 	@Override
 	public void afterTextChanged(Editable s)
 	{
-		MultiAutoCompleteTextView mAutoComplete = (MultiAutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
-		mAutoComplete.setAdapter(new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mContacts));
-		mAutoComplete.showDropDown();
+		s.
 	}
 
 	@Override
 	public void beforeTextChanged(CharSequence s, int start, int count, int after)
 	{
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count)
 	{
-		if (s.toString().length() >= 2)
+		try
 		{
 			mContacts = _getStreets(s.toString()).toArray(new String[0]).clone();
+			AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
+			mAutoComplete.showDropDown();
+
+			ArrayAdapter<String[]> arrAd = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mContacts);
+
+			mAutoComplete.setAdapter(arrAd);
+			if (s.toString().length() >= 2)
+				mAutoComplete.showDropDown();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			Log.wtf("after text change", e.toString());
 		}
 
 	}
+
 }

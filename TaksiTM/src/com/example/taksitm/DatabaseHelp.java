@@ -198,7 +198,7 @@ public class DatabaseHelp extends SQLiteOpenHelper
 	{
 
 		return myDataBase.rawQuery("select street from street where street like '%"
-				+ str + "%' AND like;", null);
+				+ str + "%' limit 10;", null);
 	}
 	// Здесь можно добавить вспомогательные методы для доступа и получения
 	// данных из БД
