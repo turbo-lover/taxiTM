@@ -25,7 +25,7 @@
         
         android:layout_marginTop="10dp"
         
-       android:src="@drawable/logo"
+       	android:src="@drawable/logo"
         android:contentDescription="@string/description" />
 
     <ImageView
@@ -40,6 +40,7 @@
         android:src="@drawable/bibicar"
         
         android:contentDescription="@string/description" />
+    
     <ImageView 
         android:id="@+id/img_vopros"
         android:layout_width="60dp"

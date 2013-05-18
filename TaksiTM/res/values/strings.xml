@@ -13,5 +13,6 @@
     <string name="title_activity_order_layout">OrderLayout</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_confirm_layout">ConfirmLayout</string>
+    <string name="title_activity_history_layout">HistoryLayout</string>
 
 </resources>

@@ -15,6 +15,10 @@ public final class R {
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
@@ -30,26 +34,30 @@ public final class R {
         public static final int choice_red_button=0x7f020007;
         public static final int circle=0x7f020008;
         public static final int confirm_caption_img_txt=0x7f020009;
-        public static final int dark_back=0x7f02000a;
-        public static final int enter_text_bottom=0x7f02000b;
-        public static final int ic_launcher=0x7f02000c;
-        public static final int logo=0x7f02000d;
-        public static final int order_by_city_btn=0x7f02000e;
-        public static final int order_caption_img=0x7f02000f;
-        public static final int order_caption_img_car=0x7f020010;
-        public static final int order_caption_img_txt=0x7f020011;
-        public static final int order_favorite_btn=0x7f020012;
-        public static final int order_ord_tx_btn=0x7f020013;
-        public static final int order_telphone_btn=0x7f020014;
-        public static final int order_to_home_btn=0x7f020015;
-        public static final int pervii_ra_ne_pidoras=0x7f020016;
-        public static final int spinner_input=0x7f020017;
-        public static final int star=0x7f020018;
-        public static final int star_white=0x7f020019;
-        public static final int text_input=0x7f02001a;
-        public static final int znak_v_apelsine=0x7f02001b;
+        public static final int confirm_change_btn=0x7f02000a;
+        public static final int confirm_denied_btn=0x7f02000b;
+        public static final int confirm_order_btn=0x7f02000c;
+        public static final int dark_back=0x7f02000d;
+        public static final int enter_text_bottom=0x7f02000e;
+        public static final int ic_launcher=0x7f02000f;
+        public static final int logo=0x7f020010;
+        public static final int order_by_city_btn=0x7f020011;
+        public static final int order_caption_img=0x7f020012;
+        public static final int order_caption_img_car=0x7f020013;
+        public static final int order_caption_img_txt=0x7f020014;
+        public static final int order_favorite_btn=0x7f020015;
+        public static final int order_ord_tx_btn=0x7f020016;
+        public static final int order_telphone_btn=0x7f020017;
+        public static final int order_to_home_btn=0x7f020018;
+        public static final int pervii_ra_ne_pidoras=0x7f020019;
+        public static final int spinner_input=0x7f02001a;
+        public static final int star=0x7f02001b;
+        public static final int star_white=0x7f02001c;
+        public static final int text_input=0x7f02001d;
+        public static final int znak_v_apelsine=0x7f02001e;
     }
     public static final class id {
+        public static final int EnterLay=0x7f09002c;
         public static final int ImageView01=0x7f090021;
         public static final int LayChoice_anckor=0x7f09001d;
         public static final int LayChoice_img_d_orange_btn=0x7f090019;
@@ -69,37 +77,37 @@ public final class R {
         public static final int LayConfirm_red=0x7f090029;
         public static final int LayConfirm_service=0x7f090023;
         public static final int LayConfirm_to=0x7f090025;
-        public static final int LayEnter_btn_login=0x7f09002f;
-        public static final int LayEnter_img_circle=0x7f09002c;
-        public static final int LayEnter_img_text_bottom=0x7f090030;
-        public static final int LayEnter_txt_number=0x7f09002d;
-        public static final int LayEnter_txt_pass=0x7f09002e;
+        public static final int LayEnter_btn_login=0x7f090030;
+        public static final int LayEnter_img_circle=0x7f09002d;
+        public static final int LayEnter_img_text_bottom=0x7f090031;
+        public static final int LayEnter_txt_number=0x7f09002e;
+        public static final int LayEnter_txt_pass=0x7f09002f;
         public static final int LayMain_txt_street=0x7f090014;
-        public static final int LayOrder_ancor=0x7f090031;
-        public static final int LayOrder_btn_from_home=0x7f09003b;
-        public static final int LayOrder_btn_hint_telephone=0x7f090036;
-        public static final int LayOrder_btn_to_home=0x7f09003f;
-        public static final int LayOrder_ed_txt_city=0x7f090033;
-        public static final int LayOrder_ed_txt_comment=0x7f090040;
-        public static final int LayOrder_ed_txt_from=0x7f090038;
-        public static final int LayOrder_ed_txt_from_number=0x7f090039;
-        public static final int LayOrder_ed_txt_number=0x7f090041;
-        public static final int LayOrder_ed_txt_taxi_serv=0x7f090035;
-        public static final int LayOrder_ed_txt_to=0x7f09003c;
-        public static final int LayOrder_ed_txt_to_number=0x7f09003d;
-        public static final int LayOrder_img_captio_car=0x7f090032;
-        public static final int LayOrder_star_city=0x7f090034;
-        public static final int LayOrder_star_from=0x7f09003a;
-        public static final int LayOrder_star_number=0x7f090042;
-        public static final int LayOrder_star_serv=0x7f090037;
-        public static final int LayOrder_star_to=0x7f09003e;
+        public static final int LayOrder_ancor=0x7f090032;
+        public static final int LayOrder_btn_from_home=0x7f09003c;
+        public static final int LayOrder_btn_hint_telephone=0x7f090037;
+        public static final int LayOrder_btn_to_home=0x7f090040;
+        public static final int LayOrder_ed_txt_city=0x7f090034;
+        public static final int LayOrder_ed_txt_comment=0x7f090041;
+        public static final int LayOrder_ed_txt_from=0x7f090039;
+        public static final int LayOrder_ed_txt_from_number=0x7f09003a;
+        public static final int LayOrder_ed_txt_number=0x7f090042;
+        public static final int LayOrder_ed_txt_taxi_serv=0x7f090036;
+        public static final int LayOrder_ed_txt_to=0x7f09003d;
+        public static final int LayOrder_ed_txt_to_number=0x7f09003e;
+        public static final int LayOrder_img_captio_car=0x7f090033;
+        public static final int LayOrder_star_city=0x7f090035;
+        public static final int LayOrder_star_from=0x7f09003b;
+        public static final int LayOrder_star_number=0x7f090043;
+        public static final int LayOrder_star_serv=0x7f090038;
+        public static final int LayOrder_star_to=0x7f09003f;
         public static final int LinearLayout01=0x7f090008;
         public static final int LinearLayout02=0x7f09000a;
         public static final int LinearLayout03=0x7f09000d;
         public static final int LinearLayout04=0x7f090010;
         public static final int LinearLayout05=0x7f090013;
         public static final int LinearLayout06=0x7f090016;
-        public static final int action_settings=0x7f090043;
+        public static final int action_settings=0x7f090044;
         public static final int btn_enter=0x7f090018;
         public static final int btn_registration=0x7f090017;
         public static final int img_bibicar=0x7f090001;
@@ -124,12 +132,14 @@ public final class R {
         public static final int choice_layout=0x7f030001;
         public static final int confirm_layout=0x7f030002;
         public static final int enter_layout=0x7f030003;
-        public static final int order_layout=0x7f030004;
+        public static final int history_layout=0x7f030004;
+        public static final int order_layout=0x7f030005;
     }
     public static final class menu {
         public static final int confirm_layout=0x7f080000;
-        public static final int main=0x7f080001;
-        public static final int order_layout=0x7f080002;
+        public static final int history_layout=0x7f080001;
+        public static final int main=0x7f080002;
+        public static final int order_layout=0x7f080003;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -143,6 +153,7 @@ public final class R {
         public static final int lay_ent_btn_enter=0x7f060008;
         public static final int request_pass=0x7f060003;
         public static final int title_activity_confirm_layout=0x7f06000b;
+        public static final int title_activity_history_layout=0x7f06000c;
         public static final int title_activity_order_layout=0x7f060009;
     }
     public static final class style {
