@@ -2,8 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    android:background="@drawable/background">
+    android:background="@drawable/background" 
+    android:isScrollContainer="true">
+   
+        <ScrollView   
+            android:layout_width="match_parent"
+    		android:layout_height="match_parent"
+    		android:scrollbarSize="1dp"
+    		
+    		>
+            <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    >
 
+    
+    
+    
    <ImageView 
        android:id="@+id/LayChoice_img_d_orange_btn"
        
@@ -34,6 +49,7 @@
        android:contentDescription="@string/description"
        android:layout_centerHorizontal="true"
        android:layout_below="@+id/LayChoice_txt"
+       android:onClick="to_Order_lay"
        
        android:src="@drawable/choice_green_button" 
        />
@@ -46,6 +62,7 @@
        android:contentDescription="@string/description"
        android:layout_below="@+id/LayChoice_img_green"
        android:layout_toLeftOf="@+id/LayChoice_anckor"
+       android:onClick="to_History"
        
        android:src="@drawable/choice_orange_button"
        />
@@ -65,10 +82,16 @@
        android:contentDescription="@string/description"
        android:layout_below="@+id/LayChoice_img_green"
        android:layout_toRightOf="@+id/LayChoice_anckor"
+       android:onClick="to_Settings"
        
        android:src="@drawable/choice_red_button"
        />
    
    
     
+</RelativeLayout>
+            
+        </ScrollView>
+
+
 </RelativeLayout>

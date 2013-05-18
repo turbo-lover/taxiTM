@@ -142,19 +142,9 @@
 	    android:layout_height="80dp"
 	    android:layout_alignLeft="@+id/LayConfirm_cost_txt"
 	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/choice_red_button" />
+	    android:src="@drawable/confirm_denied_btn" />
 	
-				<TextView
-	   				 	android:textColor="@android:color/white"
-	   				 	android:layout_width="wrap_content"
-	    				android:layout_height="wrap_content"
-	    				android:layout_alignLeft="@+id/LayConfirm_red"
-	    				android:layout_alignTop="@+id/LayConfirm_red"
-					    android:layout_marginLeft="20dp"
-					    android:layout_marginTop="30dp"
-					    android:textSize="11sp"
-					    android:text="Отмена" 
-					    />
+			
 	<ImageView
 	    android:id="@+id/LayConfirm_orange"
 	    android:layout_width="80dp"
@@ -162,18 +152,8 @@
 	    android:layout_toRightOf="@+id/LayConfirm_red"
 	    android:layout_marginLeft="10dp"
 	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/choice_orange_button" />
-				<TextView
-	   				 	android:textColor="@android:color/white"
-	   				 	android:layout_width="wrap_content"
-	    				android:layout_height="wrap_content"
-	    				android:layout_alignLeft="@+id/LayConfirm_orange"
-	    				android:layout_alignTop="@+id/LayConfirm_orange"
-					    android:layout_marginLeft="13dp"
-					    android:layout_marginTop="30dp"
-					    android:textSize="11sp"
-					    android:text="Изменить" 
-					    />
+	    android:src="@drawable/confirm_change_btn" />
+				
 	<ImageView
 	    android:id="@+id/LayConfirm_green"
 	    android:layout_width="80dp"
@@ -181,18 +161,8 @@
 	    android:layout_toRightOf="@+id/LayConfirm_orange"
 	    android:layout_marginLeft="10dp"
 	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/choice_orange_button" />
-				<TextView
-	   				 	android:textColor="@android:color/white"
-	   				 	android:layout_width="wrap_content"
-	    				android:layout_height="wrap_content"
-	    				android:layout_alignLeft="@+id/LayConfirm_green"
-	    				android:layout_alignTop="@+id/LayConfirm_green"
-					    android:layout_marginLeft="14dp"
-					    android:layout_marginTop="30dp"
-					    android:textSize="11sp"
-					    android:text="Заказать" 
-					    />
+	    android:src="@drawable/confirm_order_btn" />
+			
 	
 	
 </RelativeLayout>

@@ -9,6 +9,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
@@ -35,8 +36,7 @@ public class JSONWorker
 																				// Limit
 		HttpPost post = new HttpPost(uri);
 
-		// post.setEntity();
-
+		post.setEntity(new ByteArrayEntity(jso.toString().getBytes("UTF8")));
 		post.setHeader("json", jso.toString());
 
 		HttpResponse httpResponse = null;

@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements TextWatcher
 			Toast.makeText(this, "Отсутствует подключение к интеренету", Toast.LENGTH_LONG).show();
 			return;
 		}
-
+		// поле ввода телефона
 		EditText et = (EditText) findViewById(R.id.txt_telephone_number_main);
 
 		String valSrt = et.getText().toString();
@@ -105,9 +105,11 @@ public class MainActivity extends Activity implements TextWatcher
 			*/
 			My_AsyncTask_Worker d = new My_AsyncTask_Worker();
 			JSONObject jo = new JSONObject();
-			jo.put("number", et.getText().toString());
 
-			d.execute(jo, "http://taxi-tm.ru/index/");
+			// создаем
+			jo.put("number", valSrt);
+
+			d.execute(jo, "http://taxi-tm.ru/index/android_registration");
 			jo = d.get();
 
 			String response = jo.get("response").toString();
@@ -115,6 +117,7 @@ public class MainActivity extends Activity implements TextWatcher
 
 			if (response.equals("ok"))
 			{
+				Toast.makeText(this, reason, Toast.LENGTH_SHORT).show();
 				// save.reason
 			}
 
@@ -171,24 +174,15 @@ public class MainActivity extends Activity implements TextWatcher
 
 		Cursor cur = dbhelper.getStreetName(str);
 
-		try
+		if (cur.moveToFirst())
 		{
-			if (cur.moveToFirst())
+			do
 			{
-				do
-				{
-					strings.add(cur.getString(0));
-					cur.moveToNext();
-				} while (cur.isAfterLast() == false);
+				strings.add(cur.getString(0));
+				cur.moveToNext();
+			} while (cur.isAfterLast() == false);
 
-			}
 		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			Log.wtf("курсор", e.toString());
-		}
-
 		cur.close();
 		return strings;
 	}
@@ -196,7 +190,6 @@ public class MainActivity extends Activity implements TextWatcher
 	@Override
 	public void afterTextChanged(Editable s)
 	{
-		s.
 	}
 
 	@Override
