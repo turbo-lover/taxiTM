@@ -14,9 +14,15 @@ public class composite_history extends RelativeLayout
 {
 
     private TextView header_label;
-    private EditText from_txt;
+    private TextView from_txt;
     private LinearLayout lst_view;
 
+   public int PxtDIP(float dp)
+    {
+        int value = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                dp, getResources().getDisplayMetrics());
+        return value;
+    }
 
     public composite_history(Context context) {
         super(context);
@@ -28,16 +34,19 @@ public class composite_history extends RelativeLayout
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.history_composite_element, this);
         header_label = (TextView) findViewById(R.id.label_header);
-        from_txt = (EditText) findViewById(R.id.text_from);
+        from_txt = (TextView) findViewById(R.id.text_from);
         lst_view = (LinearLayout)findViewById(R.id.listView);
     }
 
 
     public void add_destination(String str)
     {
-        EditText et = new EditText(getContext());
-        et.setLayoutParams( new LayoutParams(LayoutParams.MATCH_PARENT,35));
+        TextView et = new TextView(getContext());
+
+        et.setLayoutParams( new LayoutParams(LayoutParams.MATCH_PARENT,PxtDIP(35f)));
+
         et.setBackgroundResource(R.drawable.text_input);
+
         et.setText(str);
         lst_view.addView(et);
     }

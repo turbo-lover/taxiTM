@@ -4,7 +4,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Transperent">
+        android:background="@color/Black">
     <TextView
             android:id="@+id/label_header"
 
@@ -44,10 +44,12 @@
             android:layout_height="35dp"
             android:layout_below="@+id/label_header"
             android:layout_alignLeft="@+id/listView"
+            android:layout_marginTop="5dp"
 
             android:background="@drawable/text_input"
             android:clickable="false"
-            android:layout_alignRight="@+id/listView"/>
+            android:layout_alignRight="@+id/listView"
+            android:editable="false"/>
     <LinearLayout
 
             android:layout_width="280dp"
