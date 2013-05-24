@@ -43,6 +43,6 @@ public class composite_history extends RelativeLayout
     }
     public void add_header(String str)
     {
-        //header_label.setText(str);
+        header_label.setText(str);
     }
 }

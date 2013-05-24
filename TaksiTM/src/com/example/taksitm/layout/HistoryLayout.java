@@ -26,14 +26,19 @@ public class HistoryLayout extends Activity
 
         try
         {
+            for (int i=10;i>0;i--)
+            {
             composite_history ch = new composite_history(this);
 
-            ch.add_destination("Конец члена парня");
-            ch.add_header("девушка делает минет!");
+            ch.add_destination("Шлюшная 3");
+            ch.add_destination("Шлюшная 5");
+            ch.add_header("девушка делает ой, омлет");
+
             ch.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
             ll.addView(ch);
+            }
         }
         catch (Exception e)
         {
