@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import android.widget.TextView;
 import com.example.taksitm.R;
 
 public class ChoiceLayout extends Activity
@@ -14,6 +15,14 @@ public class ChoiceLayout extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.choice_layout);
+
+        Intent intent = getIntent();
+
+       String u_n = intent.getStringExtra("user_name");
+
+        TextView tw_username = (TextView) findViewById(R.id.LayChoise_user_name);
+
+        tw_username.setText(u_n);
 	}
 
 	public void to_Order_lay(View v)
@@ -25,7 +34,7 @@ public class ChoiceLayout extends Activity
 
 	public void to_History(View v)
 	{
-		Intent intent = new Intent(this, OrderLayout.class);
+		Intent intent = new Intent(this, HistoryLayout.class);
 		startActivity(intent);
 
 	}

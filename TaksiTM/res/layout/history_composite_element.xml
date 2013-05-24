@@ -1,8 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Black">
+    <TextView
+            android:id="@+id/label_header"
+
+            android:textColor="@color/White"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="поездка была совершена 2 член 2013 года"
+            />
+    <!-- След строка-->
+    <TextView
+            android:id="@+id/from_label"
+
+            android:textColor="@color/White"
+            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/label_header"
+            android:text="выехал"
+            />
+    <!-- След строка-->
+    <TextView
+            android:id="@+id/to_label"
+
+            android:textColor="@color/White"
+            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/from_label"
+            android:text="приехал"
+            />
+
+    <EditText
+            android:id="@+id/text_from"
+
+            android:textColor="@color/White"
+            android:layout_width="270dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/label_header"
+            android:layout_alignLeft="@+id/listView"
+
+            android:background="@drawable/text_input"
+            android:clickable="false"
+            android:layout_alignRight="@+id/listView"/>
+    <LinearLayout
+
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:orientation="vertical"
+            
+
+            android:layout_below="@+id/text_from"
+            android:layout_toRightOf="@+id/to_label"
+            android:layout_marginLeft="10dp">
+        <EditText
+                android:id="@+id/text_from"
+
+                android:textColor="@color/White"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+
+                android:background="@drawable/text_input"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                />
 
 </LinearLayout>
+
+</RelativeLayout>

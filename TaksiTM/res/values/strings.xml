@@ -14,5 +14,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_confirm_layout">ConfirmLayout</string>
     <string name="title_activity_history_layout">HistoryLayout</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="LayMain_hint_code">Код подтверждения</string>
+    <string name="LayMain_hint_phone_number">Номер телефона</string>
+    <string name="LayMain_hint_name">Имя</string>
+    <string name="LayMain_hint_addr">Домашний адрес</string>
+    <string name="LayMain_hint_addr_home">Дом</string>
+    <string name="LayMain_hint_addr_corp">Корпус</string>
 
 </resources>

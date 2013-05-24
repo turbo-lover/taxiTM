@@ -1,5 +1,6 @@
 package com.example.taksitm;
 
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,7 +16,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelp extends SQLiteOpenHelper
 {
 
-	// стандартный системный путь к базе данных приложения
+	// СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ СЃРёСЃС‚РµРјРЅС‹Р№ РїСѓС‚СЊ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёСЏ
 
 	private static String DB_PATH = "/data/data/com.example.taksitm/databases/";
 
@@ -26,8 +27,8 @@ public class DatabaseHelp extends SQLiteOpenHelper
 	private final Context myContext;
 
 	/**
-	 * 13 Конструктор 14 Принимает и сохраняет ссылку на переданный контекст для
-	 * доступа к ресурсам приложения 15
+	 * 13 РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ 14 РџСЂРёРЅРёРјР°РµС‚ Рё СЃРѕС…СЂР°РЅСЏРµС‚ СЃСЃС‹Р»РєСѓ РЅР° РїРµСЂРµРґР°РЅРЅС‹Р№ РєРѕРЅС‚РµРєСЃС‚ РґР»СЏ
+	 * РґРѕСЃС‚СѓРїР° Рє СЂРµСЃСѓСЂСЃР°Рј РїСЂРёР»РѕР¶РµРЅРёСЏ 15
 	 * 
 	 * @param context
 	 * 
@@ -42,7 +43,7 @@ public class DatabaseHelp extends SQLiteOpenHelper
 	}
 
 	/**
-	 * Cоздает пустую базу данных и перезаписывает ее нашей собственной базой
+	 * CРѕР·РґР°РµС‚ РїСѓСЃС‚СѓСЋ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… Рё РїРµСЂРµР·Р°РїРёСЃС‹РІР°РµС‚ РµРµ РЅР°С€РµР№ СЃРѕР±СЃС‚РІРµРЅРЅРѕР№ Р±Р°Р·РѕР№
 	 * 
 	 * */
 	public void createDataBase() throws IOException
@@ -53,14 +54,14 @@ public class DatabaseHelp extends SQLiteOpenHelper
 		if (dbExist)
 		{
 
-			// ничего не делать - база уже есть
+			// РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°С‚СЊ - Р±Р°Р·Р° СѓР¶Рµ РµСЃС‚СЊ
 
 		}
 		else
 		{
 
-			// вызывая этот метод создаем пустую базу, позже она будет
-			// перезаписана
+			// РІС‹Р·С‹РІР°СЏ СЌС‚РѕС‚ РјРµС‚РѕРґ СЃРѕР·РґР°РµРј РїСѓСЃС‚СѓСЋ Р±Р°Р·Сѓ, РїРѕР·Р¶Рµ РѕРЅР° Р±СѓРґРµС‚
+			// РїРµСЂРµР·Р°РїРёСЃР°РЅР°
 
 			this.getReadableDatabase();
 
@@ -82,10 +83,10 @@ public class DatabaseHelp extends SQLiteOpenHelper
 	}
 
 	/**
-	 * Проверяет, существует ли уже эта база, чтобы не копировать каждый раз при
-	 * запуске приложения
+	 * РџСЂРѕРІРµСЂСЏРµС‚, СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё СѓР¶Рµ СЌС‚Р° Р±Р°Р·Р°, С‡С‚РѕР±С‹ РЅРµ РєРѕРїРёСЂРѕРІР°С‚СЊ РєР°Р¶РґС‹Р№ СЂР°Р· РїСЂРё
+	 * Р·Р°РїСѓСЃРєРµ РїСЂРёР»РѕР¶РµРЅРёСЏ
 	 * 
-	 * @return true если существует, false если не существует
+	 * @return true РµСЃР»Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚, false РµСЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 	 */
 	private boolean checkDataBase()
 	{
@@ -103,7 +104,7 @@ public class DatabaseHelp extends SQLiteOpenHelper
 		catch (SQLiteException e)
 		{
 
-			// база еще не существует
+			// Р±Р°Р·Р° РµС‰Рµ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 
 		}
 
@@ -119,25 +120,25 @@ public class DatabaseHelp extends SQLiteOpenHelper
 	}
 
 	/**
-	 * Копирует базу из папки assets заместо созданной локальной БД Выполняется
-	 * путем копирования потока байтов.
+	 * РљРѕРїРёСЂСѓРµС‚ Р±Р°Р·Сѓ РёР· РїР°РїРєРё assets Р·Р°РјРµСЃС‚Рѕ СЃРѕР·РґР°РЅРЅРѕР№ Р»РѕРєР°Р»СЊРЅРѕР№ Р‘Р” Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ
+	 * РїСѓС‚РµРј РєРѕРїРёСЂРѕРІР°РЅРёСЏ РїРѕС‚РѕРєР° Р±Р°Р№С‚РѕРІ.
 	 * */
 	private void copyDataBase() throws IOException
 	{
 
-		// Открываем локальную БД как входящий поток
+		// РћС‚РєСЂС‹РІР°РµРј Р»РѕРєР°Р»СЊРЅСѓСЋ Р‘Р” РєР°Рє РІС…РѕРґСЏС‰РёР№ РїРѕС‚РѕРє
 
 		InputStream myInput = myContext.getAssets().open(DB_NAME);
 
-		// Путь ко вновь созданной БД
+		// РџСѓС‚СЊ РєРѕ РІРЅРѕРІСЊ СЃРѕР·РґР°РЅРЅРѕР№ Р‘Р”
 
 		String outFileName = DB_PATH + DB_NAME;
 
-		// Открываем пустую базу данных как исходящий поток
+		// РћС‚РєСЂС‹РІР°РµРј РїСѓСЃС‚СѓСЋ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… РєР°Рє РёСЃС…РѕРґСЏС‰РёР№ РїРѕС‚РѕРє
 
 		OutputStream myOutput = new FileOutputStream(outFileName);
 
-		// перемещаем байты из входящего файла в исходящий
+		// РїРµСЂРµРјРµС‰Р°РµРј Р±Р°Р№С‚С‹ РёР· РІС…РѕРґСЏС‰РµРіРѕ С„Р°Р№Р»Р° РІ РёСЃС…РѕРґСЏС‰РёР№
 
 		byte[] buffer = new byte[1024];
 		int length;
@@ -149,7 +150,7 @@ public class DatabaseHelp extends SQLiteOpenHelper
 
 		}
 
-		// закрываем потоки
+		// Р·Р°РєСЂС‹РІР°РµРј РїРѕС‚РѕРєРё
 
 		myOutput.flush();
 
@@ -162,7 +163,7 @@ public class DatabaseHelp extends SQLiteOpenHelper
 	public void openDataBase() throws SQLException
 	{
 
-		// открываем БД
+		// РѕС‚РєСЂС‹РІР°РµРј Р‘Р”
 
 		String myPath = DB_PATH + DB_NAME;
 
@@ -200,12 +201,12 @@ public class DatabaseHelp extends SQLiteOpenHelper
 		return myDataBase.rawQuery("select street from street where street like '%"
 				+ str + "%' limit 10;", null);
 	}
-	// Здесь можно добавить вспомогательные методы для доступа и получения
-	// данных из БД
+	// Р—РґРµСЃСЊ РјРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РјРµС‚РѕРґС‹ РґР»СЏ РґРѕСЃС‚СѓРїР° Рё РїРѕР»СѓС‡РµРЅРёСЏ
+	// РґР°РЅРЅС‹С… РёР· Р‘Р”
 
-	// вы можете возвращать курсоры через "return myDataBase.query(....)", это
-	// облегчит их использование
+	// РІС‹ РјРѕР¶РµС‚Рµ РІРѕР·РІСЂР°С‰Р°С‚СЊ РєСѓСЂСЃРѕСЂС‹ С‡РµСЂРµР· "return myDataBase.query(....)", СЌС‚Рѕ
+	// РѕР±Р»РµРіС‡РёС‚ РёС… РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ
 
-	// в создании адаптеров для ваших view
+	// РІ СЃРѕР·РґР°РЅРёРё Р°РґР°РїС‚РµСЂРѕРІ РґР»СЏ РІР°С€РёС… view
 
 }

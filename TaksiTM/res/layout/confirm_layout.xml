@@ -18,7 +18,6 @@
    	    android:id="@+id/LayConfirm_img_captio_car"
    	    android:layout_width="40dp"
    	    android:layout_height="40dp"
-   	    android:layout_alignWithParentIfMissing="false"
    	    android:layout_toLeftOf="@+id/LayConfirm_ancor"
    	    android:layout_marginTop="5dp"
    	    android:layout_marginRight="10dp"

@@ -229,7 +229,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
     //TODO сохранение в конфигурацию
     private void saveUid(String str)
     {
-        sPref = getPreferences(MODE_PRIVATE);
+        sPref = getSharedPreferences("my_pref",MODE_PRIVATE);
         Editor ed = sPref.edit();
 
         ed.putString(preference_uid ,str);
@@ -257,7 +257,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         Spinner sp = (Spinner) findViewById(R.id.spinner_city);
 
     //получаем доступ к сохраннем настройкам
-        sPref = getPreferences(MODE_PRIVATE);
+        sPref = getSharedPreferences("my_pref",MODE_PRIVATE);
 
     //получаем информацию с полей
         String number = _numberTextInput.getText().toString();

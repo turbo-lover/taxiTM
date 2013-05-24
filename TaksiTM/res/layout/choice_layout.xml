@@ -86,10 +86,28 @@
        
        android:src="@drawable/choice_red_button"
        />
-   
-   
-    
-</RelativeLayout>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Large Text"
+                        android:id="@+id/LayChoise_user_name"
+                        android:layout_below="@+id/baseline"
+                        android:layout_centerHorizontal="true"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:id="@+id/baseline"
+                        android:layout_alignTop="@+id/LayChoice_img_d_orange_btn"
+                        android:layout_marginTop="75dp"
+
+                        android:layout_alignLeft="@+id/LayChoice_img_orange_btn"/>
+
+
+            </RelativeLayout>
             
         </ScrollView>
 

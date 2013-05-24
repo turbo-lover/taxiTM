@@ -1,5 +1,6 @@
 package com.example.taksitm;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,12 +21,12 @@ import org.json.JSONObject;
 public class JSONWorker
 {
 	/**
-	 * 
+	 * РєРѕ
 	 * @param jso
-	 *            - Обьект содержащий отправляемые данные.
+	 *            - РћР±СЊРµРєС‚ СЃРѕРґРµСЂР¶Р°С‰РёР№ РѕС‚РїСЂР°РІР»СЏРµРјС‹Рµ РґР°РЅРЅС‹Рµ.
 	 * @param uri
-	 *            - Адресс сервера.
-	 * @return Возвращаем ответ сервера, для обработки.
+	 *            - РђРґСЂРµСЃСЃ СЃРµСЂРІРµСЂР°.
+	 * @return Р’РѕР·РІСЂР°С‰Р°РµРј РѕС‚РІРµС‚ СЃРµСЂРІРµСЂР°, РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё.
 	 * 
 	 */
 	public static HttpResponse _SendJson(JSONObject jso, String uri) throws Exception
@@ -68,8 +69,8 @@ public class JSONWorker
 	/**
 	 * 
 	 * @param resp
-	 *            - Получаемый ответ от сервера
-	 * @return возвращаем строку возможно содержащую ok или denied;
+	 *            - РџРѕР»СѓС‡Р°РµРјС‹Р№ РѕС‚РІРµС‚ РѕС‚ СЃРµСЂРІРµСЂР°
+	 * @return РІРѕР·РІСЂР°С‰Р°РµРј СЃС‚СЂРѕРєСѓ РІРѕР·РјРѕР¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‰СѓСЋ ok РёР»Рё denied;
 	 */
 	public static JSONObject _ReceiveJsonResponse(HttpResponse resp)
 	{
