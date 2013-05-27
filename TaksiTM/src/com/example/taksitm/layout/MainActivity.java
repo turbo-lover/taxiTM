@@ -8,21 +8,17 @@ import android.content.SharedPreferences.Editor;
 import android.view.MotionEvent;
 import android.widget.*;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.example.taksitm.DatabaseHelp;
 import com.example.taksitm.My_AsyncTask_Worker;
 import com.example.taksitm.R;
 import com.example.taksitm.Validation;
@@ -46,11 +42,11 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 
         sPref = getSharedPreferences("my_pref",MODE_PRIVATE);
 
-        Toast.makeText(this,sPref.getString(preference_user_login,""),Toast.LENGTH_LONG);
+        //Toast.makeText(this,sPref.getString(preference_user_login,""),Toast.LENGTH_LONG);
 
         if (sPref.getString(preference_user_login,"").length()!= 0  )
         {
-
+            
             Intent i = new Intent(this, EnterLayout.class);
 
             try
@@ -77,7 +73,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
                 Spinner spr = (Spinner) findViewById(R.id.spinner_city);
                 if(motion.getAction() == MotionEvent.ACTION_DOWN)
                 {
-                        spinner_click();
+                        spinner_load_cities();
 
                 }
                 return false;
@@ -97,11 +93,11 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
        // spr.setOnClickListener(onClickSpinner);
 
 
-        spinner_click();
+        spinner_load_cities();
 
 	}
 
-    public void spinner_click()
+    public void spinner_load_cities()
     {
         if (Validation.isOnline(this) == false)
         {
@@ -215,7 +211,15 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 			}
             else
             {
-                Toast.makeText(this, reason, Toast.LENGTH_SHORT).show();
+                if(reason.equals("wrong_number"))
+                {
+                    Toast.makeText(this, "Номер некоректен", Toast.LENGTH_SHORT).show();
+                }
+                if(reason.equals("exists"))
+                {
+                    Toast.makeText(this, "Номер существует", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
 		}
@@ -233,6 +237,14 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         Editor ed = sPref.edit();
 
         ed.putString(preference_uid ,str);
+        ed.commit();
+    }
+    private void saveNumber(String str)
+    {
+        sPref = getSharedPreferences("my_pref",MODE_PRIVATE);
+        Editor ed = sPref.edit();
+
+        ed.putString(preference_user_login ,str);
         ed.commit();
     }
 
@@ -297,12 +309,30 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             {
 
                 Toast.makeText(this, "Вы успешно зарегистрированны!", Toast.LENGTH_SHORT).show();
+                saveNumber(number);
+
+
+                Intent i = new Intent(this, EnterLayout.class);
+
+                try
+                {
+                    startActivity(i);
+                }
+                catch (Exception e)
+                {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
 
                 return;
             }
            //если что то пошло не так!
             else
             {
+                if(response.equals("code"))
+                {
+                    Toast.makeText(this, "Не верный код из смс!",Toast.LENGTH_SHORT);
+                }
 
             }
         }

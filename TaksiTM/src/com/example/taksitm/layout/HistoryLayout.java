@@ -30,9 +30,11 @@ public class HistoryLayout extends Activity
             {
             composite_history ch = new composite_history(this);
 
-            ch.add_destination("Шлюшная 3");
-            ch.add_destination("Шлюшная 5");
-            ch.add_header("девушка делает ой, омлет");
+            ch.add_destination("Тест "+i);
+            ch.add_destination("вывода "+i);
+            ch.add_destination("больших "+i);
+            ch.add_destination("заказов "+i);
+            ch.add_header("Выехали 25/5/2013 "+i);
 
             ch.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));

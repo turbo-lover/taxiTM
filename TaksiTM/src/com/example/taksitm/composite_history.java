@@ -43,7 +43,12 @@ public class composite_history extends RelativeLayout
     {
         TextView et = new TextView(getContext());
 
-        et.setLayoutParams( new LayoutParams(LayoutParams.MATCH_PARENT,PxtDIP(35f)));
+        //устанавливаемзначение ширины и длины dip
+
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, PxtDIP(35f));
+
+        layoutParams.setMargins(0,PxtDIP(10f),0,0);
+        et.setLayoutParams( layoutParams);
 
         et.setBackgroundResource(R.drawable.text_input);
 
@@ -54,4 +59,5 @@ public class composite_history extends RelativeLayout
     {
         header_label.setText(str);
     }
+
 }

@@ -4,14 +4,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Black">
+        android:background="@color/Transperent">
     <TextView
             android:id="@+id/label_header"
 
             android:textColor="@color/White"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="поездка была совершена 2 член 2013 года"
+            android:text="поездка была совершена 2 апреля 2013 года"
             />
     <!-- След строка-->
     <TextView

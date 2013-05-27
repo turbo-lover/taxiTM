@@ -14,7 +14,7 @@ public class My_AsyncTask_Worker extends AsyncTask<Object, Void, JSONObject>
 	@Override
 	protected JSONObject doInBackground(Object... params)
 	{
-		JSONObject Response = null;
+		JSONObject Response = new JSONObject();
 		try
 		{
 
