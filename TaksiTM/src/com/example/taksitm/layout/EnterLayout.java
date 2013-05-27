@@ -29,7 +29,7 @@ public class EnterLayout extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enter_layout);
 
-		RelativeLayout rLayout = (RelativeLayout) findViewById(R.id.EnterLay);
+
         EditText number = (EditText) findViewById(R.id.LayEnter_txt_number);
         EditText pass = (EditText) findViewById(R.id.LayEnter_txt_pass);
     sPref = getSharedPreferences(preference_location,MODE_PRIVATE);
@@ -105,7 +105,7 @@ public class EnterLayout extends Activity
                 String username = jo.get("username").toString();
                 String userlogin = jo.get("userlogin").toString();
 
-                sPref = getSharedPreferences("my_pref",MODE_PRIVATE);
+                sPref = getSharedPreferences(preference_location,MODE_PRIVATE);
                 SharedPreferences.Editor ed = sPref.edit();
 
                 ed.putString(preference_user_id ,id);

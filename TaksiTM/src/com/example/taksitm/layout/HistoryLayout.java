@@ -4,6 +4,7 @@ package com.example.taksitm.layout;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import com.example.taksitm.My_AsyncTask_Worker;
 import com.example.taksitm.R;
 import com.example.taksitm.R.layout;
 import com.example.taksitm.R.menu;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import com.example.taksitm.composite_history;
+import org.json.JSONObject;
 
 public class HistoryLayout extends Activity
 {
@@ -23,6 +25,13 @@ public class HistoryLayout extends Activity
 		setContentView(R.layout.history_layout);
 
         LinearLayout ll = (LinearLayout)findViewById(R.id.LayHistory_content);
+
+        My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
+
+        JSONObject jo = new JSONObject();
+
+
+
 
         try
         {
