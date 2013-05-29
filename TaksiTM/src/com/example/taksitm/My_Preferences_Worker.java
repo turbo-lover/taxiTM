@@ -32,7 +32,7 @@ public class My_Preferences_Worker
         ed.commit();
     }
 
-    public void set_Number(String number,)
+    public void set_Number(String number)
     {
          ContextWrapper cw = new ContextWrapper(context);
          sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
@@ -42,4 +42,32 @@ public class My_Preferences_Worker
          ed.commit();
     }
 
+    public void set_value(String key,String value)
+    {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location,Context.MODE_PRIVATE);
+        Editor ed = sPref.edit();
+
+        ed.putString(key ,value);
+        ed.commit();
+    }
+
+    /*функции получения*/
+
+    public String get_UID()
+    {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
+
+        return sPref.getString(preference_uid,"");
+    }
+
+
+    public String get_user_id()
+    {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
+
+        return sPref.getString(preference_user_id,"");
+    }
 }

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.MotionEvent;
 import android.widget.*;
+import com.example.taksitm.My_Preferences_Worker;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -33,6 +34,8 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
     final private String preference_user_name = "user_name";
     final private String preference_user_login = "user_login";
 
+    My_Preferences_Worker tw;
+
     @Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -40,11 +43,14 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-        sPref = getSharedPreferences("my_pref",MODE_PRIVATE);
+        tw=new My_Preferences_Worker(this);
+
+
+
 
         //Toast.makeText(this,sPref.getString(preference_user_login,""),Toast.LENGTH_LONG);
 
-        if (sPref.getString(preference_user_login,"").length()!= 0  )
+        if (tw.get_user_id().length()!= 0  )
         {
             
             Intent i = new Intent(this, EnterLayout.class);
@@ -309,8 +315,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             {
 
                 Toast.makeText(this, "Вы успешно зарегистрированны!", Toast.LENGTH_SHORT).show();
-                saveNumber(number);
-
+                tw.set_Number(number);
 
                 Intent i = new Intent(this, EnterLayout.class);
 

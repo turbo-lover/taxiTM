@@ -63,5 +63,14 @@
             android:layout_marginLeft="10dp">
 
     </LinearLayout>
+    <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/listView"
+       android:src="@drawable/history_splitter"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+    </ImageView>
 
 </RelativeLayout>

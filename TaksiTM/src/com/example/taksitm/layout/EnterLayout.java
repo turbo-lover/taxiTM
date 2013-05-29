@@ -32,7 +32,7 @@ public class EnterLayout extends Activity
 
         EditText number = (EditText) findViewById(R.id.LayEnter_txt_number);
         EditText pass = (EditText) findViewById(R.id.LayEnter_txt_pass);
-    sPref = getSharedPreferences(preference_location,MODE_PRIVATE);
+        sPref = getSharedPreferences(preference_location,MODE_PRIVATE);
 
         number.setText(sPref.getString(preference_user_login,""));
 

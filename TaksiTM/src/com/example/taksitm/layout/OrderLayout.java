@@ -45,8 +45,7 @@ public class OrderLayout extends Activity
         }
         Spinner spr = (Spinner) findViewById(R.id.LayOrder_ed_txt_city);
 
-        if(spr.getCount()==0)
-        {
+
             try
             {
                 // получаем список городов от сервера
@@ -63,7 +62,7 @@ public class OrderLayout extends Activity
                 Log.d("onClick", je.getMessage());
                 // je.printStackTrace();
             }
-        }
+
     }
 
     private List<String> get_cities()
@@ -87,6 +86,11 @@ public class OrderLayout extends Activity
             return list;
         }
         return list;
+    }
+
+    public void add_adr(View v)
+    {
+
     }
 
 

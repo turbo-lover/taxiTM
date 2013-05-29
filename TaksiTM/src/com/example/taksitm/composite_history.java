@@ -37,6 +37,10 @@ public class composite_history extends RelativeLayout
         from_txt = (TextView) findViewById(R.id.text_from);
         lst_view = (LinearLayout)findViewById(R.id.listView);
     }
+    public void add_from(String str)
+    {
+        from_txt.setText(str);
+    }
 
 
     public void add_destination(String str)
