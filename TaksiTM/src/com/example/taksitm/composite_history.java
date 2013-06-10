@@ -54,9 +54,11 @@ public class composite_history extends RelativeLayout
         layoutParams.setMargins(0,PxtDIP(10f),0,0);
         et.setLayoutParams( layoutParams);
 
+
         et.setBackgroundResource(R.drawable.text_input);
 
         et.setText(str);
+
         lst_view.addView(et);
     }
     public void add_header(String str)

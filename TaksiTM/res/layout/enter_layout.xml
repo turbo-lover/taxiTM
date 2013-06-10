@@ -21,12 +21,13 @@
         android:layout_height="300dp"
         android:contentDescription="@string/description"
         />
+
     <EditText 
         android:id="@+id/LayEnter_txt_number"
        	android:inputType="phone"
        	android:layout_centerHorizontal="true"
        	android:layout_height="30dp"
-       	android:layout_width="160dp"
+       	android:layout_width="170dp"
        	android:layout_marginTop="160dp"
        	android:layout_alignTop="@+id/LayEnter_img_circle"
        	android:background="@drawable/text_input"
@@ -35,9 +36,9 @@
         />
       <EditText 
         android:id="@+id/LayEnter_txt_pass"
-       	android:inputType="number"
+       	android:inputType="textPassword"
        	android:layout_height="30dp"
-       	android:layout_width="160dp"
+       	android:layout_width="170dp"
        	android:layout_marginTop="10dp"
        	android:layout_below="@+id/LayEnter_txt_number"
        	android:layout_alignLeft="@+id/LayEnter_txt_number"
@@ -70,5 +71,19 @@
            
           />
 
-  
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="+7"
+            android:id="@+id/textView"
+            android:layout_above="@+id/LayEnter_txt_pass"
+            android:layout_toLeftOf="@+id/LayEnter_txt_number"
+            android:textSize="20sp"
+            android:phoneNumber="false"
+            android:layout_marginBottom="2dp"
+            android:layout_marginRight="2dp"
+            android:textColor="@color/White"/>
+
+
 </RelativeLayout>

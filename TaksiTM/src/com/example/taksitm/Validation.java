@@ -26,7 +26,7 @@ public class Validation
 		    return true;
 		else
         {
-            Toast.makeText(cntPack, "Отсутствует подключение к интернету", Toast.LENGTH_SHORT).show();
+
 			return false;
         }
 	}

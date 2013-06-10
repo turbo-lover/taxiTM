@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Transperent">
+        tools:context=".layout.HistoryLayout">
     <TextView
             android:id="@+id/label_header"
 
@@ -36,10 +37,9 @@
             android:text="приехал"
             />
 
-    <EditText
+    <TextView
             android:id="@+id/text_from"
-
-            android:textColor="@color/White"
+            android:textAlignment="center"
             android:layout_width="270dp"
             android:layout_height="35dp"
             android:layout_below="@+id/label_header"
@@ -48,8 +48,9 @@
 
             android:background="@drawable/text_input"
             android:clickable="false"
+
             android:layout_alignRight="@+id/listView"
-            android:editable="false"/>
+            />
     <LinearLayout
 
             android:layout_width="280dp"

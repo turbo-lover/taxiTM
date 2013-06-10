@@ -41,7 +41,9 @@ public class ChoiceLayout extends Activity
 
 	public void to_Settings(View v)
 	{
+        Intent i = new Intent(this,SettingLayout.class);
 
+        startActivity(i);
 	}
 
 }

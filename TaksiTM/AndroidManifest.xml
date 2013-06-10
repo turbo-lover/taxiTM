@@ -52,6 +52,7 @@
             android:name="com.example.taksitm.layout.HistoryLayout"
             android:label="@string/title_activity_history_layout" >
         </activity>
+        <activity android:name=".layout.SettingLayout"/>
     </application>
 
 </manifest>

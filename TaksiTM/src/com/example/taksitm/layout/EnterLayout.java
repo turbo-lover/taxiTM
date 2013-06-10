@@ -10,9 +10,15 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import android.widget.Toast;
+
+import com.example.taksitm.MaskWatcher;
 import com.example.taksitm.My_AsyncTask_Worker;
 import com.example.taksitm.R;
+import com.example.taksitm.Validation;
+
 import org.json.JSONObject;
+
+import static android.widget.Toast.makeText;
 
 public class EnterLayout extends Activity
 {
@@ -29,8 +35,9 @@ public class EnterLayout extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enter_layout);
 
-
+//TODO добавить пароль в pass
         EditText number = (EditText) findViewById(R.id.LayEnter_txt_number);
+        number.addTextChangedListener(new MaskWatcher());
         EditText pass = (EditText) findViewById(R.id.LayEnter_txt_pass);
         sPref = getSharedPreferences(preference_location,MODE_PRIVATE);
 
@@ -41,13 +48,6 @@ public class EnterLayout extends Activity
 
 
 
-//    Скрипт должен называться android_login
-//    Приложение отправляет запрос на вход в виде
-//    {
-//        number - мобильный телефон в качестве значения.
-//        pass - пароль
-//    }
-//
 
     JSONObject login_to_server(String pass,String login)
     {
@@ -79,7 +79,7 @@ public class EnterLayout extends Activity
         return jo;
     }
 
-//    Сервер опринимает данные и в ответ отправляет отчет в виде
+/*/    Сервер опринимает данные и в ответ отправляет отчет в виде
 //    {
 //        response - со значением вида ok / denied:
 //        * ok – если номер и пароль правильный
@@ -90,7 +90,7 @@ public class EnterLayout extends Activity
 //            * user_id -  id пользователя
 //            * username - имя пользователся
 //            * userlogin - логин/номер телефона
-//    }
+//    }*/
     private Boolean parse_responce(JSONObject jo)
     {
         try {
@@ -135,15 +135,36 @@ public class EnterLayout extends Activity
         EditText number = (EditText) findViewById(R.id.LayEnter_txt_number);
         EditText pass = (EditText) findViewById(R.id.LayEnter_txt_pass);
 
-
-
         // some validation
+        if(Validation.isOnline(this)==false)
+        {
+            makeText(this, R.string.dont_have_internet, Toast.LENGTH_SHORT).show();
 
-        JSONObject jo =login_to_server(pass.getText().toString(),number.getText().toString());
+            return;
+        }
+
+
+        String password = pass.getText().toString();
+        String login = number.getText().toString();
+
+        if(Validation.isNull(password)  == true)
+        {
+            makeText(this, R.string.notify_enter_pass,Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (Validation.isNull(login) == true)
+        {
+            makeText(this, R.string.notify_enter_number,Toast.LENGTH_SHORT).show();
+            return;
+        }
+        JSONObject jo = login_to_server(password, login);
+
+        //в parse_responce  происходит запись значений из ответа в файлы
 
        if( parse_responce(jo) == false)
        {
-           Toast.makeText(this, "Неверная комбинация логин/пароль!",Toast.LENGTH_SHORT);
+           makeText(this, R.string.notify_pass_or_login, Toast.LENGTH_SHORT).show();
+
            return;
        }
 

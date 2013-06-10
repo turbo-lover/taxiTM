@@ -7,6 +7,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.MotionEvent;
 import android.widget.*;
+import android.widget.Toast;
+
+import com.example.taksitm.MaskWatcher;
 import com.example.taksitm.My_Preferences_Worker;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,6 +26,8 @@ import android.view.View.OnClickListener;
 import com.example.taksitm.My_AsyncTask_Worker;
 import com.example.taksitm.R;
 import com.example.taksitm.Validation;
+
+import static android.widget.Toast.makeText;
 
 public class MainActivity extends Activity implements TextWatcher,OnClickListener
 {
@@ -46,6 +51,10 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         tw=new My_Preferences_Worker(this);
 
 
+        EditText et = (EditText) findViewById(R.id.LayMain_phone);
+        et.addTextChangedListener(
+                new MaskWatcher()
+        );
 
 
         //Toast.makeText(this,sPref.getString(preference_user_login,""),Toast.LENGTH_LONG);
@@ -86,19 +95,6 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             }
         });
 
-
-		if (Validation.isOnline(this) == false)
-		{
-			//Toast.makeText(this, "Отсутствует подключение к интернету", Toast.LENGTH_SHORT).show();
-			return;
-		}
-
-
-
-
-       // spr.setOnClickListener(onClickSpinner);
-
-
         spinner_load_cities();
 
 	}
@@ -107,7 +103,8 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
     {
         if (Validation.isOnline(this) == false)
         {
-            //Toast.makeText(this, "Отсутствует подключение к интернету", Toast.LENGTH_SHORT).show();
+             Toast.makeText(this, R.string.dont_have_internet, Toast.LENGTH_SHORT).show();
+
             return;
         }
         Spinner spr = (Spinner) findViewById(R.id.spinner_city);
@@ -165,18 +162,18 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 
 		if (Validation.isOnline(this) == false)
 		{
-			//Toast.makeText(this, "Отсутствует подключение к интернету", Toast.LENGTH_LONG).show();
+			makeText(this, R.string.dont_have_internet, Toast.LENGTH_LONG).show();
 			return;
 		}
 
 		// Поле ввода телефона
 		EditText _numberTextInput;
-        _numberTextInput = (EditText) findViewById(R.id.txt_telephone_number_main);
+        _numberTextInput = (EditText) findViewById(R.id.LayMain_phone);
         String valSrt = _numberTextInput.getText().toString();
 
 		if (Validation.isNull(valSrt) == true)
 		{
-			Toast.makeText(this, "Введите номер", Toast.LENGTH_SHORT).show();
+			makeText(this, R.string.notify_enter_number, Toast.LENGTH_SHORT).show();
 			_numberTextInput.requestFocus();
 			return;
 		}
@@ -186,7 +183,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 		if (_numberTextInput.getText().length() < 9)
 		{
 
-			Toast.makeText(this, "Некорректный номер", Toast.LENGTH_SHORT).show();
+			makeText(this, R.string.notify_incorrect_number, Toast.LENGTH_SHORT).show();
 			_numberTextInput.requestFocusFromTouch();
 			return;
 		}
@@ -211,7 +208,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 			{
                 saveUid(reason);
 
-				Toast.makeText(this, reason, Toast.LENGTH_SHORT).show();
+                 Toast.makeText(this, R.string.notify_wait_for_sms, Toast.LENGTH_SHORT).show();
                 // save.reason
                 return;
 			}
@@ -219,11 +216,11 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             {
                 if(reason.equals("wrong_number"))
                 {
-                    Toast.makeText(this, "Номер некоректен", Toast.LENGTH_SHORT).show();
+                    makeText(this, R.string.notify_incorrect_number, Toast.LENGTH_SHORT).show();
                 }
                 if(reason.equals("exists"))
                 {
-                    Toast.makeText(this, "Номер существует", Toast.LENGTH_SHORT).show();
+                    makeText(this, R.string.notify_number_exists, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -268,7 +265,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         // Проверочный код из смс
         EditText _passTextInput = (EditText) findViewById(R.id.txt_confirm_pass);
         // номер телефона
-        EditText _numberTextInput = (EditText) findViewById(R.id.txt_telephone_number_main);
+        EditText _numberTextInput = (EditText) findViewById(R.id.LayMain_phone);
         // ввод улицы
         AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
         // Номер города
@@ -314,7 +311,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             if (response.equals("ok"))
             {
 
-                Toast.makeText(this, "Вы успешно зарегистрированны!", Toast.LENGTH_SHORT).show();
+                makeText(this, "Вы успешно зарегистрированны!", Toast.LENGTH_SHORT).show();
                 tw.set_Number(number);
 
                 Intent i = new Intent(this, EnterLayout.class);
@@ -336,7 +333,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             {
                 if(response.equals("code"))
                 {
-                    Toast.makeText(this, "Не верный код из смс!",Toast.LENGTH_SHORT);
+                    makeText(this, "Не верный код из смс!", Toast.LENGTH_SHORT);
                 }
 
             }
@@ -379,7 +376,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 
         My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
 
-        if(s.length() >= 2)
+        if(s.length() == 2)
         {
             JSONObject jo = new JSONObject();
             Spinner sp = (Spinner) findViewById(R.id.spinner_city);

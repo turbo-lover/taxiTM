@@ -63,8 +63,8 @@
 	    android:layout_below="@+id/LayConfirm_service"
 	    android:layout_alignLeft="@+id/LayConfirm_city"
 	    android:layout_marginTop="10dp"
-	    
-	    android:layout_height="30dp"
+        android:minHeight="30dp"
+	    android:layout_height="wrap_content"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
@@ -75,8 +75,9 @@
 	    android:layout_below="@+id/LayConfirm_from"
 	    android:layout_alignLeft="@+id/LayConfirm_city"
 	    android:layout_marginTop="10dp"
-	    
-	    android:layout_height="30dp"
+
+        android:minHeight="30dp"
+        android:layout_height="wrap_content"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
@@ -87,7 +88,6 @@
 	    android:layout_below="@+id/LayConfirm_to"
 	    android:layout_alignLeft="@+id/LayConfirm_city"
 	    android:layout_marginTop="10dp"
-	    android:maxLines="4"
 	    android:lines="3"
 	    android:minHeight="30dp"
 	    android:layout_height="wrap_content"
@@ -101,8 +101,9 @@
 	    android:layout_below="@+id/LayConfirm_comment"
 	    android:layout_alignLeft="@+id/LayConfirm_city"
 	    android:layout_marginTop="10dp"
-	    
-	    android:layout_height="30dp"
+
+        android:minHeight="30dp"
+        android:layout_height="wrap_content"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
@@ -141,7 +142,8 @@
 	    android:layout_height="80dp"
 	    android:layout_alignLeft="@+id/LayConfirm_cost_txt"
 	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/confirm_denied_btn" />
+	    android:src="@drawable/confirm_denied_btn"
+        android:onClick="denied_order"/>
 	
 			
 	<ImageView
@@ -151,7 +153,8 @@
 	    android:layout_toRightOf="@+id/LayConfirm_red"
 	    android:layout_marginLeft="10dp"
 	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/confirm_change_btn" />
+	    android:src="@drawable/confirm_change_btn"
+        android:onClick="edit_order"/>
 				
 	<ImageView
 	    android:id="@+id/LayConfirm_green"
@@ -160,7 +163,8 @@
 	    android:layout_toRightOf="@+id/LayConfirm_orange"
 	    android:layout_marginLeft="10dp"
 	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/confirm_order_btn" />
+	    android:src="@drawable/confirm_order_btn"
+            android:onClick="accept_order"/>
 			
 	
 	
