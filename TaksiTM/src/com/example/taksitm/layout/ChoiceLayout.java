@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import android.widget.TextView;
+import com.example.taksitm.My_Preferences_Worker;
 import com.example.taksitm.R;
 
 public class ChoiceLayout extends Activity
@@ -45,5 +46,11 @@ public class ChoiceLayout extends Activity
 
         startActivity(i);
 	}
+
+    // TODO удаление данных пользователя
+    public void log_out(View v)
+    {
+        My_Preferences_Worker pref_worker = new My_Preferences_Worker(this);
+    }
 
 }

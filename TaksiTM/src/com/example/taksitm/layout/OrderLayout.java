@@ -38,6 +38,9 @@ public class OrderLayout extends Activity implements TextWatcher
     private Spinner spinner;
     private LinearLayout lin;
     private AutoCompleteTextView from_auto_compl;
+    private EditText ed ;
+
+    //разделение адрессов при передачи к подтверждающей активности
     private final char separator = ' ';
     private JSONObject orderJson;
 
@@ -55,7 +58,8 @@ public class OrderLayout extends Activity implements TextWatcher
 
     }
 
-    private void load_data_from_server() {
+    private void load_data_from_server()
+    {
         spinner_load_cities();
         spinner_load_services();
     }
@@ -63,8 +67,9 @@ public class OrderLayout extends Activity implements TextWatcher
 
     private void init_variables()
     {
-        EditText ed = (EditText) findViewById(R.id.LayOrder_number);
+        ed = (EditText) findViewById(R.id.LayOrder_number);
         ed.addTextChangedListener(new MaskWatcher());
+
         orderJson = new JSONObject();
         lin = (LinearLayout) findViewById(R.id.LayOrder_linear_destination);
         spinner = (Spinner) findViewById(R.id.LayOrder_ed_txt_city);

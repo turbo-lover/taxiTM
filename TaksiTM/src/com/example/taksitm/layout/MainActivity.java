@@ -167,24 +167,32 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 		}
 
 		// Поле ввода телефона
-		EditText _numberTextInput;
-        _numberTextInput = (EditText) findViewById(R.id.LayMain_phone);
-        String valSrt = _numberTextInput.getText().toString();
+		EditText _number;
+        _number = (EditText) findViewById(R.id.LayMain_phone);
+
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : _number.getText().toString().toCharArray())
+        {
+            if(Character.isDigit(c))
+                sb.append(c);
+        };
+        String valSrt = sb.toString();
 
 		if (Validation.isNull(valSrt) == true)
 		{
 			makeText(this, R.string.notify_enter_number, Toast.LENGTH_SHORT).show();
-			_numberTextInput.requestFocus();
+			_number.requestFocus();
 			return;
 		}
 
 
         //проверка на валидность
-		if (_numberTextInput.getText().length() < 9)
+		if (_number.getText().length() < 9)
 		{
 
 			makeText(this, R.string.notify_incorrect_number, Toast.LENGTH_SHORT).show();
-			_numberTextInput.requestFocusFromTouch();
+			_number.requestFocusFromTouch();
 			return;
 		}
 
@@ -265,17 +273,27 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         // Проверочный код из смс
         EditText _passTextInput = (EditText) findViewById(R.id.txt_confirm_pass);
         // номер телефона
-        EditText _numberTextInput = (EditText) findViewById(R.id.LayMain_phone);
+        EditText _number = (EditText) findViewById(R.id.LayMain_phone);
         // ввод улицы
         AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
         // Номер города
         Spinner sp = (Spinner) findViewById(R.id.spinner_city);
 
+
+    //достаем номер из маски
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : _number.getText().toString().toCharArray())
+        {
+            if(Character.isDigit(c))
+                sb.append(c);
+        };
+
     //получаем доступ к сохраннем настройкам
         sPref = getSharedPreferences("my_pref",MODE_PRIVATE);
 
     //получаем информацию с полей
-        String number = _numberTextInput.getText().toString();
+        String number = sb.toString();
         String userName =_nameTextInput.getText().toString();
         String city = ""+sp.getSelectedItemPosition()+1;
         String street = mAutoComplete.getText().toString();

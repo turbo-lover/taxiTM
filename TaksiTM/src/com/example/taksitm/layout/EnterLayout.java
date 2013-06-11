@@ -35,7 +35,7 @@ public class EnterLayout extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.enter_layout);
 
-//TODO добавить пароль в pass
+        //TODO добавить пароль в pass
         EditText number = (EditText) findViewById(R.id.LayEnter_txt_number);
         number.addTextChangedListener(new MaskWatcher());
         EditText pass = (EditText) findViewById(R.id.LayEnter_txt_pass);
@@ -143,9 +143,16 @@ public class EnterLayout extends Activity
             return;
         }
 
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : number.getText().toString().toCharArray())
+        {
+                if(Character.isDigit(c))
+                    sb.append(c);
+        };
 
         String password = pass.getText().toString();
-        String login = number.getText().toString();
+        String login = sb.toString();
 
         if(Validation.isNull(password)  == true)
         {

@@ -152,7 +152,7 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/text_input"
         android:hint="Телефон"
-        android:inputType="number" />
+        android:inputType="phone" />
 
     <ImageView
         android:id="@+id/LayOrder_star_number"
