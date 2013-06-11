@@ -26,7 +26,7 @@
     <string name="notify_incorrect_number">Некорректный номер</string>
     <string name="notify_wait_for_sms">Ожидайте СМС ссобщение на указанный номе</string>
     <string name="notify_number_exists">Номер существует</string>
-    <string name="notify_pass_or_login">Неверная комбинация логин/пароль!</string>
+    <string name="notify_pass_or_login_wrong">Неверная комбинация логин/пароль!</string>
     <string name="notify_enter_pass">Введите пароль</string>
     <string name="Android_Order">http://taxi-tm.ru/index/android_order</string>
     <string name="Android_Get_Services">"http://taxi-tm.ru/index/android_get_taxi_service"</string>

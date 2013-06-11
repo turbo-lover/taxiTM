@@ -112,7 +112,7 @@
         android:contentDescription="@string/description" />
 
     <AutoCompleteTextView
-        android:id="@+id/LayOrder_ed_txt_from"
+        android:id="@+id/LayOrder_from_txt"
         android:layout_width="220dp"
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
@@ -127,7 +127,7 @@
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_below="@+id/LayOrder_btn_hint_telephone"
-        android:layout_toRightOf="@+id/LayOrder_ed_txt_from"
+        android:layout_toRightOf="@+id/LayOrder_from_txt"
         android:background="@drawable/star_white"
         android:contentDescription="@string/description" />
 
@@ -164,7 +164,7 @@
         android:contentDescription="@string/description" />
 
     <EditText
-        android:id="@+id/LayOrder_et_txt_from_home"
+        android:id="@+id/LayOrder_from_house"
         android:layout_width="220dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -172,21 +172,21 @@
         android:ems="10"
         android:hint="@string/LayMain_hint_addr_home"
         android:paddingBottom="3dp"
-        android:layout_below="@+id/LayOrder_ed_txt_from"
+        android:layout_below="@+id/LayOrder_from_txt"
         android:layout_toLeftOf="@+id/ImageView01"
-        android:layout_alignLeft="@+id/LayOrder_ed_txt_from"
+        android:layout_alignLeft="@+id/LayOrder_from_txt"
         android:layout_marginRight="5dp">
 
     </EditText>
 
     <EditText
-        android:id="@+id/LayOrder_et_txt_from_corp"
+        android:id="@+id/LayOrder_from_corp"
         android:layout_width="220dp"
         android:layout_height="30dp"
         android:background="@drawable/text_input"
         android:ems="10"
         android:hint="@string/LayMain_hint_addr_corp"
-        android:layout_alignTop="@+id/LayOrder_et_txt_from_home"
+        android:layout_alignTop="@+id/LayOrder_from_house"
         android:layout_toLeftOf="@+id/LayOrder_star_from"
         android:layout_toRightOf="@+id/LayOrder_ancor"
         android:layout_marginLeft="5dp"/>
@@ -197,10 +197,11 @@
         android:id="@+id/LayOrder_btn_from_home"
         android:layout_width="40dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/LayOrder_et_txt_from_home"
+        android:layout_below="@+id/LayOrder_from_house"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:background="@drawable/order_to_home_btn" />
+        android:src="@drawable/order_to_home_btn"
+            android:onClick="from_home"/>
 
     <Button
         android:id="@+id/LayOrder_btn_add_adr"
@@ -219,7 +220,9 @@
         android:layout_toLeftOf="@+id/LayOrder_btn_from_home"
         android:layout_marginTop="14dp"
         android:layout_below="@+id/LayOrder_linear_destination"
-        android:src="@drawable/order_to_home_btn"/>
+        android:src="@drawable/order_to_home_btn"
+        android:layout_marginRight="30dp"
+        android:onClick="to_home"/>
 
     <ImageView
         android:id="@+id/imageView1"
@@ -285,6 +288,16 @@
             android:textColor="@color/White"
             android:layout_marginRight="2dp"
             android:layout_marginTop="2dp"/>
+
+    <ImageView
+            android:id="@+id/by_city"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/order_by_city_btn"
+            android:layout_alignTop="@+id/LayOrder_btn_add_adr"
+            android:layout_toLeftOf="@+id/LayOrder_btn_add_adr"
+            android:layout_marginRight="10dp"
+            android:onClick="by_city"/>
 
 
 </RelativeLayout>

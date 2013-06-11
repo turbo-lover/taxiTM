@@ -55,7 +55,15 @@ public class OrderLayout extends Activity implements TextWatcher
 
         add_adr();
 
+        set_from_pref();
+    }
 
+    private void set_from_pref()
+    {
+        My_Preferences_Worker my_pref = new My_Preferences_Worker(this);
+
+        // записываем номер из настроек
+       ed.setText(my_pref.get_user_number());
     }
 
     private void load_data_from_server()
@@ -74,7 +82,7 @@ public class OrderLayout extends Activity implements TextWatcher
         lin = (LinearLayout) findViewById(R.id.LayOrder_linear_destination);
         spinner = (Spinner) findViewById(R.id.LayOrder_ed_txt_city);
 
-        from_auto_compl = (AutoCompleteTextView) findViewById(R.id.LayOrder_ed_txt_from);
+        from_auto_compl = (AutoCompleteTextView) findViewById(R.id.LayOrder_from_txt);
 
         from_auto_compl.addTextChangedListener(this);
 
@@ -181,6 +189,8 @@ public class OrderLayout extends Activity implements TextWatcher
         return list;
     }
 
+
+
     private void add_adr() {
         if (lin.getChildCount() != 3) {
             composite_order co = new composite_order(this);
@@ -216,8 +226,34 @@ public class OrderLayout extends Activity implements TextWatcher
         }
     }
 
+    public void to_home(View v)
+    {
+        My_Preferences_Worker pref = new My_Preferences_Worker(this);
+       composite_order co = (composite_order) lin.getChildAt(0);
 
-    public void OrderButton_click(View v) {
+        co.setTo(pref.get_user_address());
+
+        co.setTo_number(pref.get_user_address_house());
+        co.setTo_corp(pref.get_user_address_corpus());
+    }
+
+    public void from_home(View v)
+    {
+        My_Preferences_Worker pref = new My_Preferences_Worker(this);
+
+        AutoCompleteTextView to = (AutoCompleteTextView) findViewById(R.id.LayOrder_from_txt);
+        EditText to_house = (EditText) findViewById(R.id.LayOrder_from_house);
+        EditText to_corp = (EditText) findViewById(R.id.LayOrder_from_corp);
+
+       to.setText(pref.get_user_address());
+
+        to_house.setText(pref.get_user_address_house());
+        to_corp.setText(pref.get_user_address_corpus());
+    }
+
+
+    public void OrderButton_click(View v)
+    {
         //TODO some validation
 
         Spinner tx_serv = (Spinner) findViewById(R.id.LayOrder_sp_txt_taxi_serv);
@@ -236,7 +272,6 @@ public class OrderLayout extends Activity implements TextWatcher
 
         try
         {
-
             orderJson.put("destination",getDestination());
             orderJson.put("inception",get_inception());
             orderJson.put("city_id",spinner.getSelectedItemPosition()+1);
@@ -313,16 +348,16 @@ public class OrderLayout extends Activity implements TextWatcher
 
     private String get_inception(char s)
     {
-       EditText home = (EditText) findViewById(R.id.LayOrder_et_txt_from_home);
-       EditText corp = (EditText) findViewById(R.id.LayOrder_et_txt_from_corp);
+       EditText home = (EditText) findViewById(R.id.LayOrder_from_house);
+       EditText corp = (EditText) findViewById(R.id.LayOrder_from_corp);
 
         String inception =  from_auto_compl.getText().toString()+s+home.getText().toString()+s+corp.getText().toString();
         return inception;
     }
     private JSONArray get_inception()
     {
-        EditText home = (EditText) findViewById(R.id.LayOrder_et_txt_from_home);
-        EditText corp = (EditText) findViewById(R.id.LayOrder_et_txt_from_corp);
+        EditText home = (EditText) findViewById(R.id.LayOrder_from_house);
+        EditText corp = (EditText) findViewById(R.id.LayOrder_from_corp);
         JSONObject ja = new JSONObject();
         JSONArray js = new JSONArray();
         try

@@ -7,14 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import android.widget.Toast;
 
-import com.example.taksitm.MaskWatcher;
-import com.example.taksitm.My_AsyncTask_Worker;
-import com.example.taksitm.R;
-import com.example.taksitm.Validation;
+import com.example.taksitm.*;
 
 import org.json.JSONObject;
 
@@ -93,6 +89,8 @@ public class EnterLayout extends Activity
 //    }*/
     private Boolean parse_responce(JSONObject jo)
     {
+        My_Preferences_Worker pref_work = new My_Preferences_Worker(this);
+
         try {
           String resp =  jo.get("response").toString();
 
@@ -104,20 +102,28 @@ public class EnterLayout extends Activity
                 String id = jo.get("user_id").toString();
                 String username = jo.get("username").toString();
                 String userlogin = jo.get("userlogin").toString();
+                String user_address = jo.getString("user_address");
+                String user_address_house = jo.getString("user_address_house");
+                String user_address_corpus = jo.getString("user_address_corpus");
 
                 sPref = getSharedPreferences(preference_location,MODE_PRIVATE);
                 SharedPreferences.Editor ed = sPref.edit();
 
                 ed.putString(preference_user_id ,id);
-                
                 ed.putString(preference_user_name,username);
                 ed.putString(preference_user_login,userlogin);
+                
+                pref_work.set_user_address(user_address);
+                pref_work.set_user_address_corpus(user_address_corpus);
+                pref_work.set_user_address_house(user_address_house);
+
+
                 ed.commit();
                 return true;
             }
             if(resp.equals("denied"))
             {
-            //TODO возможнотутприйдется занулять данныепользователя!
+            //TODO возможно тут прийдется занулять данные пользователя!
 
                 return false;
                 //Toast.makeText(this, "Неверная комбинация логин/пароль!",Toast.LENGTH_LONG);
@@ -129,7 +135,7 @@ public class EnterLayout extends Activity
 
     }
 
-
+//обработка нажатия конопки входа
     public void ent_buttonClick(View v)
 	{
         EditText number = (EditText) findViewById(R.id.LayEnter_txt_number);
@@ -154,6 +160,7 @@ public class EnterLayout extends Activity
         String password = pass.getText().toString();
         String login = sb.toString();
 
+///////////////////////////////////////////////////////////////////////////////
         if(Validation.isNull(password)  == true)
         {
             makeText(this, R.string.notify_enter_pass,Toast.LENGTH_SHORT).show();
@@ -164,13 +171,14 @@ public class EnterLayout extends Activity
             makeText(this, R.string.notify_enter_number,Toast.LENGTH_SHORT).show();
             return;
         }
+////////////////////////////////////////////////////////////////////////////
+
         JSONObject jo = login_to_server(password, login);
 
         //в parse_responce  происходит запись значений из ответа в файлы
-
        if( parse_responce(jo) == false)
        {
-           makeText(this, R.string.notify_pass_or_login, Toast.LENGTH_SHORT).show();
+           makeText(this, R.string.notify_pass_or_login_wrong, Toast.LENGTH_SHORT).show();
 
            return;
        }
@@ -185,6 +193,7 @@ public class EnterLayout extends Activity
             // имя грузим из файлика
 
             intent.putExtra("user_name",sPref.getString(preference_user_name,""));
+
 
 			startActivity(intent);
 		}
