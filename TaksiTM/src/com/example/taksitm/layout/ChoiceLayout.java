@@ -50,7 +50,7 @@ public class ChoiceLayout extends Activity
     // TODO удаление данных пользователя
     public void log_out(View v)
     {
-        My_Preferences_Worker pref_worker = new My_Preferences_Worker(this);
+       finish();
 
     }
 

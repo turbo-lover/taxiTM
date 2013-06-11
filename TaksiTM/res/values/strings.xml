@@ -31,5 +31,7 @@
     <string name="Android_Order">http://taxi-tm.ru/index/android_order</string>
     <string name="Android_Get_Services">"http://taxi-tm.ru/index/android_get_taxi_service"</string>
     <string name="congragulation_order">Заказ успешно отправлен</string>
+    <string name="change">Изменить</string>
+    <string name="notify_same_address">Нельзя указать одинаковый адрес</string>
 
 </resources>

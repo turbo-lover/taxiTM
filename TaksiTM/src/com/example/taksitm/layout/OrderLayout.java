@@ -42,6 +42,8 @@ public class OrderLayout extends Activity implements TextWatcher
 
     //разделение адрессов при передачи к подтверждающей активности
     private final char separator = ' ';
+
+
     private JSONObject orderJson;
 
     @Override
@@ -224,6 +226,16 @@ public class OrderLayout extends Activity implements TextWatcher
         {
             lin.removeViewAt(lin.getChildCount()-1);
         }
+    }
+
+    public void by_city()
+    {
+        My_Preferences_Worker pref = new My_Preferences_Worker(this);
+        composite_order co = (composite_order) lin.getChildAt(0);
+
+        co.setTo("По городу");
+
+
     }
 
     public void to_home(View v)

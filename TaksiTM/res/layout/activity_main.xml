@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
+android:background="@color/White"
     tools:context=".MainActivity"
   
     >
@@ -309,7 +309,7 @@
 		            									   android:layout_weight="1"
 		            									   android:layout_height="35dp"
 		            									   android:layout_width="match_parent"
-		            									   android:background="@drawable/button_shape_1"
+                                                           android:background="@drawable/button_shape_1"
 		            									   android:text="@string/btn_main1_registr"
 		            									   android:clickable="true"
 		            									   android:onClick="btn_Register"
