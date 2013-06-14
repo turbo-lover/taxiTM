@@ -13,25 +13,6 @@
 
     android:background="#425562" >
 
-    <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:layout_marginBottom="15dp"
-
-            android:background="#fff"
-
-            ></RelativeLayout>
-
-    <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/history_splitter"
-
-            >
-
-    </RelativeLayout>
     <!-- - - - - - - - - -ЗАГОЛОВОК - - - - - - - - - -->
 	
     <EditText
@@ -152,7 +133,8 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/text_input"
         android:hint="Телефон"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:paddingLeft="30dp"/>
 
     <ImageView
         android:id="@+id/LayOrder_star_number"
@@ -248,26 +230,6 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-            android:id="@+id/LayOrder_footer"
-            android:layout_width="fill_parent"
-            android:layout_height="8dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/history_splitter"
-
-            android:layout_below="@+id/imageView1"
-
-            android:layout_alignParentLeft="true">
-    </RelativeLayout>
-    <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:background="#fff"
-            android:id="@+id/relativeLayout3"
-            android:layout_below="@+id/LayOrder_footer"
-            android:layout_alignParentLeft="true">
-    </RelativeLayout>
-
     <Button
             android:id="@+id/LayOrder_rem_btn"
             android:layout_width="40dp"
@@ -282,12 +244,11 @@
             android:layout_height="wrap_content"
             android:text="+7"
             android:id="@+id/textView"
-            android:layout_alignTop="@+id/LayOrder_number"
-            android:layout_toLeftOf="@+id/LayOrder_number"
             android:textSize="20sp"
-            android:textColor="@color/White"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="2dp"/>
+            android:textColor="@color/Black"
+            android:layout_below="@+id/LayOrder_star_number"
+            android:layout_alignLeft="@+id/LayOrder_number"
+            android:layout_marginLeft="5dp"/>
 
     <ImageView
             android:id="@+id/by_city"

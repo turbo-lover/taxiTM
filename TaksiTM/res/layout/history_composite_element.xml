@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/label_header"
-            android:text="выехал"
+            android:text="ОТ"
             />
     <!-- След строка-->
     <TextView
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/from_label"
-            android:text="приехал"
+            android:text="ДО"
             />
 
     <TextView

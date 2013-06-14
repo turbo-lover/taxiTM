@@ -13,11 +13,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/scrollView"
 
-            android:layout_alignParentLeft="true">
+            android:layout_alignParentLeft="true"
+            >
 
         <RelativeLayout android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-            <ImageView
+                        android:layout_height="fill_parent"
+                        android:minHeight="800dp">
+            ImageView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/history_header"
@@ -26,53 +28,48 @@
                     android:layout_alignParentLeft="true"/>
 
 
-            <EditText
-                    android:id="@+id/history_ancor"
-                    android:layout_below="@+id/history_header"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentTop="false"/>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="5dp">
 
-            <ImageView
-                    android:id="@+id/history_logo"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/history_logo"
-                    android:contentDescription="@string/description"
-                    android:layout_below="@+id/history_header"
-                    android:layout_toLeftOf="@+id/history_ancor"
-                    ></ImageView>
+                <ImageView
+                        android:id="@+id/history_logo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/history_logo"
+                        android:contentDescription="@string/description"
+                        android:layout_alignParentTop="false"
+                        android:layout_toLeftOf="@+id/textView"
+                        android:layout_marginRight="30dp"></ImageView>
 
-            <ImageView
-                    android:id="@+id/history_logo_text"
-                    android:layout_width="144dp"
-                    android:layout_height="17dp"
-                    android:background="@drawable/history_logo_text"
-                    android:contentDescription="@string/description"
-                    android:layout_alignBottom="@+id/history_logo"
-                    android:layout_alignParentRight="false"
-                    android:layout_marginRight="35dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_toRightOf="@+id/history_ancor"
-                    />
+                <ImageView
+                        android:id="@+id/history_logo_text"
+                        android:layout_width="144dp"
+                        android:layout_height="17dp"
+                        android:background="@drawable/history_logo_text"
+                        android:contentDescription="@string/description"
+                        android:layout_centerVertical="true"
+                        android:layout_alignLeft="@+id/history_logo"
+                        android:layout_marginLeft="50dp"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Small Text"
+                        android:id="@+id/textView"
+                        android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+
             <LinearLayout
                     android:id="@+id/LayHistory_content"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="false"
-                    android:layout_below="@+id/history_logo_text"
                     >
             </LinearLayout>
-            <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/history_fotter"
-                    android:src="@drawable/history_footter"
-                    android:layout_below="@+id/LayHistory_content"
-
-                    />
 
         </RelativeLayout>
 

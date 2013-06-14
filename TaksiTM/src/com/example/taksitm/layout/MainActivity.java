@@ -40,6 +40,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
     final private String preference_user_login = "user_login";
 
     My_Preferences_Worker tw;
+    private boolean FLAG = true;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -50,6 +51,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 
         tw=new My_Preferences_Worker(this);
 
+        FLAG=true;
 
         EditText et = (EditText) findViewById(R.id.LayMain_phone);
         et.addTextChangedListener(
@@ -160,8 +162,16 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 	public void btn_RequestPass(View v)
 	{
 
+        if(FLAG == false)
+        {
+
+            return;
+        }
+
+        FLAG = false;
 		if (Validation.isOnline(this) == false)
 		{
+            FLAG = true;
 			makeText(this, R.string.dont_have_internet, Toast.LENGTH_LONG).show();
 			return;
 		}
@@ -183,14 +193,15 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 		{
 			makeText(this, R.string.notify_enter_number, Toast.LENGTH_SHORT).show();
 			_number.requestFocus();
+            FLAG = true;
 			return;
 		}
 
 
         //проверка на валидность
-		if (_number.getText().length() < 9)
+		if (_number.getText().length() == 13)
 		{
-
+            FLAG = true;
 			makeText(this, R.string.notify_incorrect_number, Toast.LENGTH_SHORT).show();
 			_number.requestFocusFromTouch();
 			return;
@@ -217,7 +228,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
                 saveUid(reason);
 
                  Toast.makeText(this, R.string.notify_wait_for_sms, Toast.LENGTH_SHORT).show();
-                // save.reason
+
                 return;
 			}
             else
@@ -225,10 +236,12 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
                 if(reason.equals("wrong_number"))
                 {
                     makeText(this, R.string.notify_incorrect_number, Toast.LENGTH_SHORT).show();
+                    FLAG = true;
                 }
                 if(reason.equals("exists"))
                 {
                     makeText(this, R.string.notify_number_exists, Toast.LENGTH_SHORT).show();
+                    FLAG = true;
                 }
 
             }
@@ -380,6 +393,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 	@Override
 	public void afterTextChanged(Editable s)
 	{
+
 	}
 
 	@Override
@@ -392,10 +406,17 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 	public void onTextChanged(CharSequence s, int start, int before, int count)
 	{
 
+
         My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
 
         if(s.length() == 2)
         {
+            if (Validation.isOnline(this) == false)
+            {
+                Toast.makeText(this, R.string.dont_have_internet, Toast.LENGTH_SHORT).show();
+
+                return;
+            }
             JSONObject jo = new JSONObject();
             Spinner sp = (Spinner) findViewById(R.id.spinner_city);
             try
@@ -417,15 +438,11 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
                     list.add(c.get("title").toString());
                 }
 
-
-
 			    AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
                 ArrayAdapter<String[]> arrAd = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, list);
                 mAutoComplete.setAdapter(arrAd);
 
                 mAutoComplete.showDropDown();
-
-
             }
             catch(Exception e)
             {
@@ -433,26 +450,6 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             }
 
         }
-
-
-//		/*try
-//		{
-//			mContacts = _getStreets(s.toString()).toArray(new String[0]).clone();
-//			AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
-//			mAutoComplete.showDropDown();
-//
-//			ArrayAdapter<String[]> arrAd = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, mContacts);
-//
-//			mAutoComplete.setAdapter(arrAd);
-//			if (s.toString().length() >= 2)
-//				mAutoComplete.showDropDown();
-//		}
-//		catch (Exception e)
-//		{
-//			e.printStackTrace();
-//			Log.wtf("after text change", e.toString());
-//		}*/
-
 	}
 
     @Override

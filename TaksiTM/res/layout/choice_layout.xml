@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="@drawable/background" 
-    android:isScrollContainer="true"
-    android:padding="20dp"
-    android:paddingTop="30dp">
-   
-        <ScrollView   
-            android:layout_width="match_parent"
-    		android:layout_height="match_parent"
-    		android:scrollbarSize="1dp"
-    		
-    		>
+    android:layout_height="match_parent"
+    android:scrollbarSize="1dp"
+        android:background="@color/White">
             <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content" 
@@ -28,17 +20,32 @@
        android:layout_height="150dp"
        android:contentDescription="@string/description"
        android:layout_centerHorizontal="true"
-       android:onClick="log_out"
+
        android:src="@drawable/choice_dark_orange_button"
        android:layout_marginTop="10dp"/>
+
+                <Button
+                        android:onClick="log_out"
+                        android:id="@+id/choice_exit"
+                        android:layout_width="130dp"
+                        android:layout_height="50dp"
+                        style="@style/OrangeButton"
+                        android:textColor="@color/White"
+                        android:text="ВЫХОД"
+                        android:textSize="25sp"
+                        android:layout_marginTop="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/LayChoice_img_d_orange_btn"
+                        android:background="@drawable/button_shape_1"/>
    <ImageView
        android:id="@+id/LayChoice_txt"
-       
+
+       android:layout_marginTop="10dp"
        android:layout_height="60dp"
        android:layout_width="wrap_content"
        android:layout_centerHorizontal="true"
        android:contentDescription="@string/description"
-       android:layout_below="@+id/LayChoice_img_d_orange_btn"
+       android:layout_below="@+id/choice_exit"
        
        android:src="@drawable/enter_text_bottom"
        
@@ -92,7 +99,6 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:text="Large Text"
                         android:id="@+id/LayChoise_user_name"
                         android:layout_below="@+id/baseline"
@@ -110,8 +116,4 @@
 
 
             </RelativeLayout>
-            
-        </ScrollView>
-
-
-</RelativeLayout>
+</ScrollView>

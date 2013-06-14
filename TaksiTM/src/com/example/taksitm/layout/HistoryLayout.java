@@ -5,9 +5,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.ColorStateList;
 import android.net.ConnectivityManager;
 import android.os.Debug;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -88,7 +90,7 @@ public class HistoryLayout extends Activity
 
             if(usr_id.length() != 0)
             {
-                //TODO изменить
+
                 jo.put("user_id",usr_id);
                 //jo.put("user_id",""+55);
 
@@ -130,6 +132,8 @@ public class HistoryLayout extends Activity
             empty_textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
             empty_textView.setText("История пуста!");
+            empty_textView.setTextColor(R.color.White);
+            empty_textView.setTextSize(PxToDIP(20));
             ll.addView(empty_textView);
         }
 
@@ -162,6 +166,13 @@ public class HistoryLayout extends Activity
         {
             Log.d("history", e.getMessage());
         }
+    }
+
+    public int PxToDIP(float dp)
+    {
+        int value = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                dp, getResources().getDisplayMetrics());
+        return value;
     }
 
 }

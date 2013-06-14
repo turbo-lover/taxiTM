@@ -136,4 +136,13 @@ public class My_Preferences_Worker
 
         return sPref.getString(preference_user_address_corpus,"");
     }
+
+
+    public String get_user_name()
+    {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
+
+        return sPref.getString(preference_user_name,"");
+    }
 }

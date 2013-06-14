@@ -1,4 +1,5 @@
 <!--suppress AndroidDomInspection -->
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,18 +7,12 @@
     android:layout_height="fill_parent"
 android:background="@color/White"
     tools:context=".MainActivity"
-  
+
     >
     
     <!--  
     эти строчки были в корневом элементе
       -->
-    <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="7dp"
-            android:background="@drawable/history_splitter"
-
-            android:id="@+id/relativeLayout2"></RelativeLayout>
 
     <RelativeLayout
             android:layout_width="fill_parent"
@@ -26,7 +21,6 @@ android:background="@color/White"
             android:paddingRight="15dp"
             android:layout_marginTop="10dp"
             android:id="@+id/relativeLayout"
-            android:layout_alignTop="@+id/relativeLayout2"
             android:layout_alignParentLeft="true">
     <ImageView
         android:id="@+id/img_logo"
@@ -107,7 +101,7 @@ android:background="@color/White"
         				>
                         <TextView android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"
-                                  android:textSize="20sp"
+                                  android:textSize="22sp"
                                 android:text="+7"/>
         
        								<EditText
@@ -257,12 +251,12 @@ android:background="@color/White"
             			android:layout_weight="4"
             			android:textColor="@android:color/black"
                         android:hint="@string/LayMain_hint_addr"
-            			android:layout_height="34dp"
+            			android:layout_height="wrap_content"
             			android:layout_width="fill_parent"
           				android:background="@drawable/spinner_input"
 
 
-          				/>
+                        android:minHeight="34dp"/>
 		        </LinearLayout>
         <LinearLayout
                 android:id="@+id/LinearLayout05"
@@ -332,14 +326,5 @@ android:background="@color/White"
     </LinearLayout>
 
     </RelativeLayout>
-
-    <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="7dp"
-            android:background="@drawable/history_splitter"
-            android:paddingBottom="5dp"
-            android:id="@+id/relativeLayout3"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
