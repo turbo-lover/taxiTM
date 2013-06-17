@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+        android:layout_marginTop="5dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".layout.HistoryLayout">
+        tools:context=".layout.HistoryLayout"
+       >
+
     <TextView
             android:id="@+id/label_header"
-
             android:textColor="@color/White"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="поездка была совершена 2 апреля 2013 года"
-            />
+            android:layout_marginLeft="10dp"/>
     <!-- След строка-->
     <TextView
             android:id="@+id/from_label"
@@ -22,9 +24,10 @@
             android:layout_height="35dp"
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
+
             android:layout_below="@+id/label_header"
             android:text="ОТ"
-            />
+            android:layout_marginLeft="10dp"/>
     <!-- След строка-->
     <TextView
             android:id="@+id/to_label"
@@ -35,7 +38,7 @@
             android:layout_marginTop="10dp"
             android:layout_below="@+id/from_label"
             android:text="ДО"
-            />
+            android:layout_marginLeft="10dp"/>
 
     <TextView
             android:id="@+id/text_from"
@@ -52,22 +55,36 @@
             android:layout_alignRight="@+id/listView"
             />
     <LinearLayout
-
+            android:id="@+id/listView"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:id="@+id/listView"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
 
+            android:orientation="vertical"
+
+            android:minHeight="35dp"
             android:layout_below="@+id/text_from"
             android:layout_toRightOf="@+id/to_label"
             android:layout_marginLeft="10dp">
 
     </LinearLayout>
+    <Button
+           android:id="@+id/history_btn"
+           android:layout_below="@+id/listView"
+           android:layout_width="180dp"
+           android:layout_height="50dp"
+           android:textSize="20sp"
+           android:layout_centerHorizontal="true"
+           android:text="@string/repeat_order"
+            android:background="@drawable/button_shape_1"
+            style="@style/OrangeButton"
+            android:onClick="repeat_order"
+            />
+
+
     <ImageView
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_below="@+id/listView"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/history_btn"
        android:src="@drawable/history_splitter"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">

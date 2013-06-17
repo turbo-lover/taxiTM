@@ -10,12 +10,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
 
 import com.example.taksitm.MaskWatcher;
 import com.example.taksitm.My_AsyncTask_Worker;
@@ -39,6 +34,8 @@ public class OrderLayout extends Activity implements TextWatcher
     private LinearLayout lin;
     private AutoCompleteTextView from_auto_compl;
     private EditText ed ;
+    String entered_before = "";
+    String city_id ="";
 
     //разделение адрессов при передачи к подтверждающей активности
     private final char separator = ' ';
@@ -58,6 +55,23 @@ public class OrderLayout extends Activity implements TextWatcher
         add_adr();
 
         set_from_pref();
+
+        parse_previous_activity();
+
+    }
+
+    private void parse_previous_activity()
+    {
+
+        Intent intent = getIntent();
+
+        String previous_activity = intent.getStringExtra("previous");
+
+        if(previous_activity.equals(ChoiceLayout.class))
+        {
+            return;
+        }
+
     }
 
     private void set_from_pref()
@@ -83,6 +97,21 @@ public class OrderLayout extends Activity implements TextWatcher
         orderJson = new JSONObject();
         lin = (LinearLayout) findViewById(R.id.LayOrder_linear_destination);
         spinner = (Spinner) findViewById(R.id.LayOrder_ed_txt_city);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                entered_before="";
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView)
+            {
+                spinner.setSelection(0);
+
+            }
+        });
 
         from_auto_compl = (AutoCompleteTextView) findViewById(R.id.LayOrder_from_txt);
 
@@ -473,8 +502,7 @@ public class OrderLayout extends Activity implements TextWatcher
 
     }
 
-    String entered_before = "";
-    String city_id ="";
+
     @Override
     public void onTextChanged(CharSequence s, int i, int i2, int i3) {
         My_AsyncTask_Worker worker = new My_AsyncTask_Worker();

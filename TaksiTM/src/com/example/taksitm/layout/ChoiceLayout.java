@@ -29,6 +29,7 @@ public class ChoiceLayout extends Activity
 	public void to_Order_lay(View v)
 	{
 		Intent intent = new Intent(this, OrderLayout.class);
+        intent.putExtra("previous",ChoiceLayout.class);
 		startActivity(intent);
 
 	}

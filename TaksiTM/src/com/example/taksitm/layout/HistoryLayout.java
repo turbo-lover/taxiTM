@@ -34,12 +34,14 @@ import org.json.JSONObject;
 public class HistoryLayout extends Activity
 {
     private NetworkStateReceiver mNetSateReceiver = null;
-
+    LinearLayout ll;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.history_layout);
+
+        ll = (LinearLayout)findViewById(R.id.LayHistory_content);
 
         mNetSateReceiver = new NetworkStateReceiver();
         //подключения слушателя события включения интернета
@@ -56,10 +58,14 @@ public class HistoryLayout extends Activity
         @Override
         public void onReceive( Context context, Intent intent )
         {
+           if(Validation.isOnline(context))
+           {
+
             LinearLayout ll = (LinearLayout)findViewById(R.id.LayHistory_content);
 
                 clear_history();
                 set_history(get_history());
+           }
 
         }
     }
@@ -117,7 +123,7 @@ public class HistoryLayout extends Activity
 
     private void set_history(JSONObject jo)
     {
-        LinearLayout ll = (LinearLayout)findViewById(R.id.LayHistory_content);
+
         JSONArray ja =new JSONArray();
         try
         {
@@ -146,6 +152,7 @@ public class HistoryLayout extends Activity
 
                 JSONObject jObj = ja.getJSONObject(i);
                 String dest = jObj.getString("to");
+
                 for (String s : dest.split("/"))
                 {
                     if(s.equals("  ") == false)
@@ -159,6 +166,8 @@ public class HistoryLayout extends Activity
                 ch.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
 
+                ch.setTag(jObj);
+
             ll.addView(ch);
             }
         }
@@ -166,6 +175,13 @@ public class HistoryLayout extends Activity
         {
             Log.d("history", e.getMessage());
         }
+    }
+
+    public void repeat_order(View v)
+    {
+       composite_history ch = (composite_history) v.getParent().getParent();
+
+       JSONObject jo = (JSONObject) ch.getTag();
     }
 
     public int PxToDIP(float dp)

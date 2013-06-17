@@ -4,8 +4,10 @@ import android.content.Context;
 import android.text.style.LineHeightSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import org.json.JSONObject;
 
 /**
  * Created by turbo_lover on 24.05.13.
@@ -29,6 +31,8 @@ public class composite_history extends RelativeLayout
         init_component();
     }
 
+
+
     private void init_component()
     {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -51,7 +55,8 @@ public class composite_history extends RelativeLayout
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, PxtDIP(35f));
 
-        layoutParams.setMargins(0,PxtDIP(10f),0,0);
+
+        layoutParams.setMargins(0,PxtDIP(5f),0,0);
         et.setLayoutParams( layoutParams);
 
 

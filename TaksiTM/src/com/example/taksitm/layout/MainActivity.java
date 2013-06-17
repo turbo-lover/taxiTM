@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
     final private String preference_user_name = "user_name";
     final private String preference_user_login = "user_login";
 
-    My_Preferences_Worker tw;
+    My_Preferences_Worker preferences_worker;
     private boolean FLAG = true;
 
     @Override
@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-        tw=new My_Preferences_Worker(this);
+        preferences_worker =new My_Preferences_Worker(this);
 
         FLAG=true;
 
@@ -61,7 +61,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 
         //Toast.makeText(this,sPref.getString(preference_user_login,""),Toast.LENGTH_LONG);
 
-        if (tw.get_user_id().length()!= 0  )
+        if (preferences_worker.get_user_id().length()!= 0)
         {
             
             Intent i = new Intent(this, EnterLayout.class);
@@ -69,6 +69,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             try
             {
                 startActivity(i);
+                finish();
             }
             catch (Exception e)
             {
@@ -343,7 +344,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             {
 
                 makeText(this, "Вы успешно зарегистрированны!", Toast.LENGTH_SHORT).show();
-                tw.set_Number(number);
+                preferences_worker.set_Number(number);
 
                 Intent i = new Intent(this, EnterLayout.class);
 

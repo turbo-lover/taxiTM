@@ -196,6 +196,8 @@ public class EnterLayout extends Activity
 
 
 			startActivity(intent);
+
+            finish();
 		}
 		catch (Exception e)
 		{
