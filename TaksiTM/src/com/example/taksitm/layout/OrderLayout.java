@@ -1,10 +1,15 @@
 package com.example.taksitm.layout;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -27,10 +32,12 @@ import java.util.List;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
+import static com.example.taksitm.R.*;
 
 public class OrderLayout extends Activity implements TextWatcher
 {
-    private Spinner spinner;
+
+    private Spinner city_spinner;
     private LinearLayout lin;
     private AutoCompleteTextView from_auto_compl;
     private EditText ed ;
@@ -42,11 +49,13 @@ public class OrderLayout extends Activity implements TextWatcher
 
 
     private JSONObject orderJson;
+    private ArrayList<String> numberList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.order_layout);
+        setContentView(layout.order_layout);
 
         init_variables();
 
@@ -70,13 +79,14 @@ public class OrderLayout extends Activity implements TextWatcher
         String previous_activity = intent.getStringExtra("previous");
 
         //если из основной но нифига не делаем или если что обрабатываем здесь
-        //TODO проверка того что пришли со страницы выбора )
+        //CHECKED проверка того что пришли со страницы выбора )
         if(previous_activity.equals(ChoiceLayout.class.toString()))
         {
             Toast.makeText(this,"choise = ",LENGTH_SHORT).show();
             return;
         }
 
+        //
         if(previous_activity.equals(HistoryLayout.class.toString()))
         {
             try
@@ -85,11 +95,31 @@ public class OrderLayout extends Activity implements TextWatcher
 
                 JSONObject json = new JSONObject(str_with_json);
 
-               String city = json.getString("city");
+                String city = json.getString("city");
+                city_spinner.setSelection(Integer.getInteger(city)-1);
+
+                String[] inception = json.getString("from").split("/");
+
+                from_auto_compl.setText(inception[0]);
+
+                //только если не пробел, это показатель пустоты к сожалению так (
+                if(!inception[1].equals(" "))
+                {
+                     EditText from_house= (EditText) findViewById(id.LayOrder_from_house);
+                    from_house.setText( inception[1]);
+                }
+
+                if(!inception[2].equals(" "))
+                {
+                    EditText from_house= (EditText) findViewById(id.LayOrder_from_corp);
+                    from_house.setText( inception[2]);
+                }
 
             }
             catch (Exception e)
-            {}
+            {
+                Log.d("adding",e.getMessage());
+            }
 
         }
 
@@ -114,29 +144,27 @@ public class OrderLayout extends Activity implements TextWatcher
 
     private void init_variables()
     {
-        ed = (EditText) findViewById(R.id.LayOrder_number);
+        ed = (EditText) findViewById(id.LayOrder_number);
         ed.addTextChangedListener(new MaskWatcher());
+        city_spinner = (Spinner) findViewById(id.LayOrder_ed_txt_city);
 
         orderJson = new JSONObject();
-        lin = (LinearLayout) findViewById(R.id.LayOrder_linear_destination);
-        spinner = (Spinner) findViewById(R.id.LayOrder_ed_txt_city);
+        lin = (LinearLayout) findViewById(id.LayOrder_linear_destination);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        city_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
-            {
-                entered_before="";
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                entered_before = "";
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView)
-            {
-                spinner.setSelection(0);
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                city_spinner.setSelection(0);
 
             }
         });
 
-        from_auto_compl = (AutoCompleteTextView) findViewById(R.id.LayOrder_from_txt);
+        from_auto_compl = (AutoCompleteTextView) findViewById(id.LayOrder_from_txt);
 
         from_auto_compl.addTextChangedListener(this);
 
@@ -161,7 +189,7 @@ public class OrderLayout extends Activity implements TextWatcher
             makeText(this, "Отсутствует подключение к интернету", LENGTH_SHORT).show();
             return;
         }
-        Spinner spr = (Spinner) findViewById(R.id.LayOrder_ed_txt_city);
+        Spinner spr = (Spinner) findViewById(id.LayOrder_ed_txt_city);
 
 
         try {
@@ -187,21 +215,23 @@ public class OrderLayout extends Activity implements TextWatcher
             //Toast.makeText(this, "Отсутствует подключение к интернету", Toast.LENGTH_SHORT).show();
             return;
         }
-        Spinner spr = (Spinner) findViewById(R.id.LayOrder_sp_txt_taxi_serv);
+        Spinner spr = (Spinner) findViewById(id.LayOrder_sp_txt_taxi_serv);
 
         //epyftv city_id
-        Spinner city = (Spinner) findViewById(R.id.LayOrder_ed_txt_city);
+
 
         try {
             // получаем список городов от сервера
-            List<String> list = get_service(city.getSelectedItemPosition() + 1);
+            List<String> list = get_service(city_spinner.getSelectedItemPosition() + 1);
 
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
 
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             // !  наполняем список городов
             spr.setAdapter(dataAdapter);
-        } catch (Exception je) {
+        }
+        catch (Exception je)
+        {
             Log.d("onClick", je.getMessage());
             // je.printStackTrace();
         }
@@ -213,17 +243,28 @@ public class OrderLayout extends Activity implements TextWatcher
         My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
         JSONArray ja = new JSONArray();
         List<String> list = new ArrayList<String>();
+        numberList = new ArrayList<String>();
         try
         {
-            worker.execute(new JSONObject().put("city_id", city_id), "http://taxi-tm.ru/index/android_get_taxi_service");
+            worker.execute(new JSONObject().put("city_id", city_id),"http://taxi-tm.ru/index/android_get_taxi_service");
             ja = worker.get().getJSONArray("taxi");
 
-            for (int i = 0; i < ja.length(); i++) {
+            for (int i = 0; i < ja.length(); i++)
+            {
                 JSONObject c = ja.getJSONObject(i);
                 list.add(c.get("taxi_service").toString());
 
+
+                String[] phoneNumbers = c.getString("service_phonenumber").split(",");
+                for (String number:phoneNumbers)
+                {
+                    numberList.add(number);
+                }
+
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             Log.d("get_city method", e.getMessage());
             return list;
         }
@@ -256,7 +297,7 @@ public class OrderLayout extends Activity implements TextWatcher
         if (lin.getChildCount() != 3)
         {
             composite_order co = new composite_order(this);
-            co.setSpinner(spinner);
+            co.setSpinner(city_spinner);
 
             //LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams()
             co.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
@@ -275,7 +316,8 @@ public class OrderLayout extends Activity implements TextWatcher
         }
     }
 
-    public void add_adr(View v) {
+    public void add_adr(View v)
+    {
 
 
         add_adr();
@@ -306,19 +348,25 @@ public class OrderLayout extends Activity implements TextWatcher
         My_Preferences_Worker pref = new My_Preferences_Worker(this);
        composite_order co = (composite_order) lin.getChildAt(0);
 
-        co.setTo(pref.get_user_address());
-
-        co.setTo_number(pref.get_user_address_house());
-        co.setTo_corp(pref.get_user_address_corpus());
+        try
+        {
+            co.setTo(pref.get_user_address());
+            co.setTo_number(pref.get_user_address_house());
+            co.setTo_corp(pref.get_user_address_corpus());
+        }
+        catch (Exception e)
+        {
+            Log.d("to_home(View v)",e.getMessage());
+        }
     }
 
     public void from_home(View v)
     {
         My_Preferences_Worker pref = new My_Preferences_Worker(this);
 
-        AutoCompleteTextView to = (AutoCompleteTextView) findViewById(R.id.LayOrder_from_txt);
-        EditText to_house = (EditText) findViewById(R.id.LayOrder_from_house);
-        EditText to_corp = (EditText) findViewById(R.id.LayOrder_from_corp);
+        AutoCompleteTextView to = (AutoCompleteTextView) findViewById(id.LayOrder_from_txt);
+        EditText to_house = (EditText) findViewById(id.LayOrder_from_house);
+        EditText to_corp = (EditText) findViewById(id.LayOrder_from_corp);
 
        to.setText(pref.get_user_address());
 
@@ -326,20 +374,106 @@ public class OrderLayout extends Activity implements TextWatcher
         to_corp.setText(pref.get_user_address_corpus());
     }
 
+    public void call_service(View v)
+    {
+        //CHECKED подгрузить с сервера список номеров
 
+        //CHECKED предоставить возможность выбора номера из списка
+
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+        CharSequence[] charSequences = numberList.toArray(new CharSequence[numberList.size()]);
+
+        AlertDialog.Builder builder;
+        builder = alertDialog.setItems(charSequences,new DialogInterface.OnClickListener()
+        {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i)
+            {
+                try
+                {
+                    ListView lw = ((AlertDialog)dialogInterface).getListView();
+                    String checkedItem = lw.getAdapter().getItem(i).toString();
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+
+
+                    callIntent.setData(Uri.parse("tel:" + checkedItem));
+                    startActivity(callIntent);
+                }
+                catch (Exception ex)
+                {
+                    Log.d("onClick sing line", ex.getMessage());
+                }
+            }
+        }
+        );
+
+        builder.show();
+
+
+
+    }
+    // * * * * * * * * * * Copy-pasted code, but working correctly. Yeah!! * * * * * * * * * * * * * * * * * * * * * * *
+
+    private class PhoneCallListener extends PhoneStateListener {
+
+        private boolean isPhoneCalling = false;
+
+        String LOG_TAG = "LOGGING 123";
+
+        @Override
+        public void onCallStateChanged(int state, String incomingNumber) {
+
+            if (TelephonyManager.CALL_STATE_RINGING == state) {
+                // phone ringing
+                Log.i(LOG_TAG, "RINGING, number: " + incomingNumber);
+            }
+
+            if (TelephonyManager.CALL_STATE_OFFHOOK == state) {
+                // active
+                Log.i(LOG_TAG, "OFFHOOK");
+
+                isPhoneCalling = true;
+            }
+
+            if (TelephonyManager.CALL_STATE_IDLE == state) {
+                // run when class initial and phone call ended,
+                // need detect flag from CALL_STATE_OFFHOOK
+                Log.i(LOG_TAG, "IDLE");
+
+                if (isPhoneCalling) {
+
+                    Log.i(LOG_TAG, "restart app");
+
+                    // restart app
+                    Intent i = getBaseContext().getPackageManager()
+                            .getLaunchIntentForPackage(
+                                    getBaseContext().getPackageName());
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+
+                    isPhoneCalling = false;
+                }
+
+            }
+        }
+    }
+    // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
     public void OrderButton_click(View v)
     {
         //TODO some validation
 
-        Spinner tx_serv = (Spinner) findViewById(R.id.LayOrder_sp_txt_taxi_serv);
+        Spinner tx_serv = (Spinner) findViewById(id.LayOrder_sp_txt_taxi_serv);
         My_Preferences_Worker pw = new My_Preferences_Worker(this);
-        EditText ed_comment = (EditText) findViewById(R.id.LayOrder_ed_txt_comment);
-        EditText ed_number = (EditText) findViewById(R.id.LayOrder_number);
+        EditText ed_comment = (EditText) findViewById(id.LayOrder_ed_txt_comment);
+        EditText ed_number = (EditText) findViewById(id.LayOrder_number);
 
 //        Собираем данные о точках назначения/ начала/ города/ и прочей поебени )
         String destination = getDestination(separator);
         String inception = get_inception(separator);
-        String city = spinner.getSelectedItem().toString();
+        String city = city_spinner.getSelectedItem().toString();
         String taxi_serv = ""+tx_serv.getSelectedItemPosition()+1;
         String user_id = pw.get_user_id();
         String comment = ed_comment.getText().toString();
@@ -355,12 +489,18 @@ public class OrderLayout extends Activity implements TextWatcher
             Toast.makeText(this,"Заполните поле конечного адресса",LENGTH_SHORT).show();
             return;
         }
+        if(number.length()!=13)
+        {
+            Toast.makeText(this,"Заполните поле телефонного номера",LENGTH_SHORT).show();
+            return;
+
+        }
 
         try
         {
             orderJson.put("destination",getDestination());
             orderJson.put("inception",get_inception());
-            orderJson.put("city_id",spinner.getSelectedItemPosition()+1);
+            orderJson.put("city_id", city_spinner.getSelectedItemPosition()+1);
             orderJson.put("service", taxi_serv);
             orderJson.put("user_id", user_id);
             orderJson.put("comment", comment);
@@ -396,7 +536,7 @@ public class OrderLayout extends Activity implements TextWatcher
 
             startActivityForResult(i, 0);
         } catch (Exception e) {
-            // TODO: handle exception
+            // CHECKED: handle exception
             e.printStackTrace();
         }
     }
@@ -431,7 +571,7 @@ public class OrderLayout extends Activity implements TextWatcher
             String str = j.get("success").toString();
             if(str.equals("ok"))
             {
-                Toast.makeText(this,R.string.congragulation_order,LENGTH_SHORT).show();
+                Toast.makeText(this, string.congragulation_order,LENGTH_SHORT).show();
             }
         }
         catch (Exception e)
@@ -442,16 +582,16 @@ public class OrderLayout extends Activity implements TextWatcher
 
     private String get_inception(char s)
     {
-       EditText home = (EditText) findViewById(R.id.LayOrder_from_house);
-       EditText corp = (EditText) findViewById(R.id.LayOrder_from_corp);
+       EditText home = (EditText) findViewById(id.LayOrder_from_house);
+       EditText corp = (EditText) findViewById(id.LayOrder_from_corp);
 
         String inception =  from_auto_compl.getText().toString()+s+home.getText().toString()+s+corp.getText().toString();
         return inception;
     }
     private JSONArray get_inception()
     {
-        EditText home = (EditText) findViewById(R.id.LayOrder_from_house);
-        EditText corp = (EditText) findViewById(R.id.LayOrder_from_corp);
+        EditText home = (EditText) findViewById(id.LayOrder_from_house);
+        EditText corp = (EditText) findViewById(id.LayOrder_from_corp);
         JSONObject ja = new JSONObject();
         JSONArray js = new JSONArray();
         try
@@ -531,7 +671,7 @@ public class OrderLayout extends Activity implements TextWatcher
         My_AsyncTask_Worker worker = new My_AsyncTask_Worker();
 
         if (Validation.isOnline(this) == false) {
-            Toast.makeText(this, R.string.dont_have_internet, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, string.dont_have_internet, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -544,8 +684,8 @@ public class OrderLayout extends Activity implements TextWatcher
 
             try {
                 jo.put("chars", s.toString());
-                jo.put("city_id", spinner.getSelectedItemPosition() + 1);
-                city_id= ""+spinner.getSelectedItemPosition() + 1;
+                jo.put("city_id", city_spinner.getSelectedItemPosition() + 1);
+                city_id= ""+ city_spinner.getSelectedItemPosition() + 1;
 
                 worker.execute(jo, "http://taxi-tm.ru/index/android_get_street");
                 // TODO вынести все в отдельную функцию

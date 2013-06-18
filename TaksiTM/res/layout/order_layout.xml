@@ -81,7 +81,8 @@
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/LayOrder_sp_txt_taxi_serv"
         android:background="@drawable/order_telphone_btn"
-        android:contentDescription="@string/description" />
+        android:contentDescription="@string/description"
+        android:onClick="call_service"/>
 
     <ImageView
         android:id="@+id/LayOrder_star_serv"
@@ -95,7 +96,8 @@
     <AutoCompleteTextView
         android:id="@+id/LayOrder_from_txt"
         android:layout_width="220dp"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
         android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
         android:layout_below="@+id/LayOrder_btn_hint_telephone"
         android:layout_marginTop="5dp"

@@ -63,6 +63,8 @@ public class ChoiceLayout extends Activity
     // TODO удаление данных пользователя
     public void log_out(View v)
     {
+        Intent intent = new Intent(this,EnterLayout.class);
+        startActivity(intent);
        finish();
 
     }

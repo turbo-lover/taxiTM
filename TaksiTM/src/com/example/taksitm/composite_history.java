@@ -53,12 +53,13 @@ public class composite_history extends RelativeLayout
 
         //устанавливаемзначение ширины и длины dip
 
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, PxtDIP(35f));
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
 
         layoutParams.setMargins(0,PxtDIP(5f),0,0);
         et.setLayoutParams( layoutParams);
 
+        et.setMinHeight(PxtDIP(35f));
 
         et.setBackgroundResource(R.drawable.text_input);
 

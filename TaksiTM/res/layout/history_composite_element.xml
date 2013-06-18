@@ -33,6 +33,7 @@
             android:id="@+id/to_label"
 
             android:textColor="@color/White"
+
             android:layout_height="35dp"
             android:layout_width="wrap_content"
             android:layout_marginTop="10dp"
@@ -44,7 +45,8 @@
             android:id="@+id/text_from"
             android:textAlignment="center"
             android:layout_width="270dp"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp"
             android:layout_below="@+id/label_header"
             android:layout_alignLeft="@+id/listView"
             android:layout_marginTop="5dp"
@@ -71,12 +73,13 @@
            android:id="@+id/history_btn"
            android:layout_below="@+id/listView"
            android:layout_width="180dp"
-           android:layout_height="50dp"
+           android:layout_height="30dp"
            android:textSize="20sp"
            android:layout_centerHorizontal="true"
            android:text="@string/repeat_order"
             android:background="@drawable/button_shape_1"
             style="@style/OrangeButton"
+            android:layout_marginTop="5dp"
             android:onClick="repeat_order"
             />
 
