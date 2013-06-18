@@ -182,6 +182,14 @@ public class HistoryLayout extends Activity
        composite_history ch = (composite_history) v.getParent().getParent();
 
        JSONObject jo = (JSONObject) ch.getTag();
+
+        Intent intent = new Intent(this,OrderLayout.class);
+       String json = jo.toString();
+
+        intent.putExtra("json",json);
+        intent.putExtra("previous",HistoryLayout.class.toString());
+
+        startActivity(intent);
     }
 
     public int PxToDIP(float dp)

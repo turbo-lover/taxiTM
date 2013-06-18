@@ -11,17 +11,29 @@ import com.example.taksitm.R;
 
 public class ChoiceLayout extends Activity
 {
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        tw_username.setText(preferences_worker.get_user_name());
+    }
+    TextView tw_username;
+    My_Preferences_Worker preferences_worker;
 
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.choice_layout);
 
+        preferences_worker = new My_Preferences_Worker(this);
+
         Intent intent = getIntent();
 
-       String u_n = intent.getStringExtra("user_name");
+        String u_n = intent.getStringExtra("user_name");
 
-        TextView tw_username = (TextView) findViewById(R.id.LayChoise_user_name);
+        preferences_worker.set_value("username",u_n);
+        tw_username = (TextView) findViewById(R.id.LayChoise_user_name);
 
         tw_username.setText(u_n);
 	}
@@ -29,7 +41,7 @@ public class ChoiceLayout extends Activity
 	public void to_Order_lay(View v)
 	{
 		Intent intent = new Intent(this, OrderLayout.class);
-        intent.putExtra("previous",ChoiceLayout.class);
+        intent.putExtra("previous",ChoiceLayout.class.toString());
 		startActivity(intent);
 
 	}

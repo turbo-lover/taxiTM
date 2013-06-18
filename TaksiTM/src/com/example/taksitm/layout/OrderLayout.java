@@ -56,6 +56,8 @@ public class OrderLayout extends Activity implements TextWatcher
 
         set_from_pref();
 
+
+        // узнаем из какой активити мы сюда пришли )
         parse_previous_activity();
 
     }
@@ -67,10 +69,31 @@ public class OrderLayout extends Activity implements TextWatcher
 
         String previous_activity = intent.getStringExtra("previous");
 
-        if(previous_activity.equals(ChoiceLayout.class))
+        //если из основной но нифига не делаем или если что обрабатываем здесь
+        //TODO проверка того что пришли со страницы выбора )
+        if(previous_activity.equals(ChoiceLayout.class.toString()))
         {
+            Toast.makeText(this,"choise = ",LENGTH_SHORT).show();
             return;
         }
+
+        if(previous_activity.equals(HistoryLayout.class.toString()))
+        {
+            try
+            {
+                String str_with_json = intent.getStringExtra("json");
+
+                JSONObject json = new JSONObject(str_with_json);
+
+               String city = json.getString("city");
+
+            }
+            catch (Exception e)
+            {}
+
+        }
+
+
 
     }
 

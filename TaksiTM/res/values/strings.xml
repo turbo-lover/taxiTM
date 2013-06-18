@@ -35,4 +35,7 @@
     <string name="notify_same_address">Нельзя указать одинаковый адрес</string>
     <string name="repeat_order">Повтор заказа</string>
 
+    <string name="setting_name">Имя</string>
+    <string name="setting_street">Улица</string><string name="setting_changePass">Cменить пароль вы можете на нашем сайте</string><string name="change_pass">ИЗМЕНИТЬ ПАРОЛЬ</string>
+
 </resources>
