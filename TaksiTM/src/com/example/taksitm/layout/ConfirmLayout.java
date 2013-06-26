@@ -5,19 +5,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.example.taksitm.R;
-import com.example.taksitm.R.layout;
-import com.example.taksitm.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ConfirmLayout extends Activity
 {
-    TextView from,to,comment,city,service,number;
+    TextView from,to,comment,city,service,number,price;
 
 
 	@Override
@@ -31,6 +25,7 @@ public class ConfirmLayout extends Activity
         city = (TextView) findViewById(R.id.LayConfirm_city);
         service = (TextView) findViewById(R.id.LayConfirm_service);
         number= (TextView) findViewById(R.id.LayConfirm_number);
+        price = (TextView) findViewById(R.id.LayConfirm_price);
 
 
         try
@@ -45,6 +40,7 @@ public class ConfirmLayout extends Activity
             number.setText(i.getStringExtra("number"));
 
             to.setText(i.getStringExtra("destination"));
+            price.setText(i.getStringExtra("price"));
 
 
 
@@ -54,9 +50,6 @@ public class ConfirmLayout extends Activity
         {
             Log.d("onload", e.getMessage());
         }
-
-
-
 	}
 
 

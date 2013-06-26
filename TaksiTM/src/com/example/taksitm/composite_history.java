@@ -1,13 +1,10 @@
 package com.example.taksitm;
 
 import android.content.Context;
-import android.text.style.LineHeightSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import org.json.JSONObject;
 
 /**
  * Created by turbo_lover on 24.05.13.
@@ -45,8 +42,6 @@ public class composite_history extends RelativeLayout
     {
         from_txt.setText(str);
     }
-
-
     public void add_destination(String str)
     {
         TextView et = new TextView(getContext());

@@ -5,11 +5,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.ColorStateList;
 import android.net.ConnectivityManager;
-import android.os.Debug;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,18 +16,14 @@ import android.widget.TextView;
 import com.example.taksitm.My_AsyncTask_Worker;
 import com.example.taksitm.My_Preferences_Worker;
 import com.example.taksitm.R;
-import com.example.taksitm.R.layout;
-import com.example.taksitm.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 import android.widget.Toast;
 
 import com.example.taksitm.Validation;
 import com.example.taksitm.composite_history;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HistoryLayout extends Activity
@@ -138,8 +133,9 @@ public class HistoryLayout extends Activity
             empty_textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
             empty_textView.setText("История пуста!");
-            empty_textView.setTextColor(R.color.White);
+            empty_textView.setTextColor(getResources().getColor(R.color.White));
             empty_textView.setTextSize(PxToDIP(20));
+            
             ll.addView(empty_textView);
         }
 
@@ -160,13 +156,17 @@ public class HistoryLayout extends Activity
                 } ;
 
                 ch.add_header("Дата поездки "+jObj.getString("date"));
-                ch.add_from(jObj.getString("from"));
+                String from = jObj.getString("from").replace('/',' ');
+                ch.add_from(from);
 
+               LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                       ViewGroup.LayoutParams.WRAP_CONTENT);
+                lp.gravity = Gravity.CENTER_HORIZONTAL;
 
-                ch.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
+                ch.setLayoutParams(lp);
 
-                ch.setTag(jObj);
+                ch.setTag(jObj.getString("id"));
+                
 
             ll.addView(ch);
             }
@@ -181,12 +181,9 @@ public class HistoryLayout extends Activity
     {
        composite_history ch = (composite_history) v.getParent().getParent();
 
-       JSONObject jo = (JSONObject) ch.getTag();
-
         Intent intent = new Intent(this,OrderLayout.class);
-       String json = jo.toString();
 
-        intent.putExtra("json",json);
+        intent.putExtra("order_id",ch.getTag().toString());
         intent.putExtra("previous",HistoryLayout.class.toString());
 
         startActivity(intent);

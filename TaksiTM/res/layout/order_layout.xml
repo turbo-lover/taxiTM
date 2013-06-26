@@ -210,14 +210,14 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="-20dp"
-        android:layout_alignRight="@+id/LayOrder_star_number"
-
-        android:layout_below="@+id/LayOrder_number"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:clickable="true"
         android:background="@drawable/order_ord_tx_btn"
-        android:onClick="OrderButton_click" />
+        android:onClick="OrderButton_click"
+        android:layout_below="@+id/LayOrder_number"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
 
     <LinearLayout
             android:orientation="vertical"
@@ -237,9 +237,10 @@
             android:layout_width="40dp"
             android:layout_height="52dp"
             android:background="@drawable/order_rem_adr"
+            android:onClick="rem_adr"
             android:layout_alignTop="@+id/LayOrder_btn_add_adr"
-            android:layout_alignLeft="@+id/imageView1"
-            android:onClick="rem_adr"/>
+            android:layout_toRightOf="@+id/LayOrder_btn_add_adr"
+            android:layout_marginLeft="10dp"/>
 
     <TextView
             android:layout_width="wrap_content"

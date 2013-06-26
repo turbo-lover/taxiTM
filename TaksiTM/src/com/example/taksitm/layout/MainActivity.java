@@ -69,7 +69,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
             try
             {
                 startActivity(i);
-                finish();
+
             }
             catch (Exception e)
             {

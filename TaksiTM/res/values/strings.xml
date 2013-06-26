@@ -37,5 +37,6 @@
 
     <string name="setting_name">Имя</string>
     <string name="setting_street">Улица</string><string name="setting_changePass">Cменить пароль вы можете на нашем сайте</string><string name="change_pass">ИЗМЕНИТЬ ПАРОЛЬ</string>
+    <string name="operator_off">Извините, в данной службе такси недоступен оператор, выберете другой сервис</string>
 
 </resources>

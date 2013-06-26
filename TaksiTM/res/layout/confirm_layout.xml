@@ -1,5 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -8,7 +12,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#4B4B4B" >
 <!-- - - - - - - - - -ЗАГОЛОВОК - - - - - - - - -  -->
-    <EditText 
+    <TextView
         android:id="@+id/LayConfirm_ancor"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -23,82 +27,70 @@
    	        android:contentDescription="@string/description"
             android:layout_below="@+id/LayConfirm_ancor"
             android:layout_centerHorizontal="true"/>
-<!-- - - - - - - - - КОНЕЦ ЗАГОЛОВКА - - - - - - - - -  -->\
+<!-- - - - - - - - - КОНЕЦ ЗАГОЛОВКА - - - - - - - - -  -->
 	<TextView 
 	   android:id="@+id/LayConfirm_city"
 	   
 	   android:layout_height="30dp"
 	   android:layout_width="270dp"
-	   
-	   android:layout_centerHorizontal="true"
-	   android:layout_marginTop="10dp"
-	   android:layout_below="@+id/LayConfirm_img_captio_car"
-	   
-	   android:background="@drawable/text_input"
-	    />
+
+       android:background="@drawable/text_input"
+       android:layout_below="@+id/textView"
+       android:layout_centerHorizontal="true"/>
 	<TextView 
 	    android:id="@+id/LayConfirm_service"
-	    
-	    android:layout_below="@+id/LayConfirm_city"
-	    android:layout_alignLeft="@+id/LayConfirm_city"
-	    android:layout_marginTop="10dp"
-	    
-	    android:layout_height="30dp"
+
+        android:layout_height="30dp"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
-	    />
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/LayConfirm_from"
+        android:layout_marginTop="5dp"/>
 	<TextView 
 	    android:id="@+id/LayConfirm_from"
-	    
-	    android:layout_below="@+id/LayConfirm_service"
-	    android:layout_alignLeft="@+id/LayConfirm_city"
-	    android:layout_marginTop="10dp"
+
         android:minHeight="30dp"
-	    android:layout_height="10dp"
+	    android:layout_height="wrap_content"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
-	    />
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/LayConfirm_to"
+        android:layout_marginTop="5dp"/>
     <TextView 
 	    android:id="@+id/LayConfirm_to"
-	    
-	    android:layout_below="@+id/LayConfirm_from"
-	    android:layout_alignLeft="@+id/LayConfirm_city"
-	    android:layout_marginTop="10dp"
 
         android:minHeight="30dp"
         android:layout_height="wrap_content"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
-	    />
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
     <TextView 
 	    android:id="@+id/LayConfirm_comment"
-	    
-	    android:layout_below="@+id/LayConfirm_to"
-	    android:layout_alignLeft="@+id/LayConfirm_city"
-	    android:layout_marginTop="10dp"
-	    android:lines="3"
+
+        android:lines="3"
 	    android:minHeight="30dp"
 	    android:layout_height="wrap_content"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
-	    />
+        android:layout_below="@+id/textView5"
+        android:layout_alignLeft="@+id/LayConfirm_number"/>
 	<TextView 
 	    android:id="@+id/LayConfirm_number"
-	    
-	    android:layout_below="@+id/LayConfirm_comment"
-	    android:layout_alignLeft="@+id/LayConfirm_city"
-	    android:layout_marginTop="10dp"
 
         android:minHeight="30dp"
         android:layout_height="wrap_content"
 	   	android:layout_width="270dp"
 	   
 	    android:background="@drawable/text_input"
-	    />
+        android:layout_below="@+id/textView6"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"/>
 	
 	<TextView 
 	    android:id="@+id/LayConfirm_cost_txt"
@@ -113,19 +105,19 @@
 	   	
 	   	android:layout_below="@+id/LayConfirm_number"
 	    />
-	<TextView 
-	    android:text="500 P"
-	    android:layout_alignTop="@+id/LayConfirm_cost_txt"
-	    android:layout_marginLeft="30dp"
+	<TextView
+        android:id="@+id/LayConfirm_price"
+        android:layout_alignTop="@+id/LayConfirm_cost_txt"
+	    android:layout_marginLeft="10dp"
 	    android:layout_toRightOf="@+id/LayConfirm_cost_txt"
-	    android:lines="1"
 	    android:layout_height="wrap_content"
-	   	android:layout_width="100dp"
+	   	android:layout_width="wrap_content"
 	   	android:textColor="@android:color/white"
-	   	android:textSize="38sp"
+	   	android:textSize="20sp"
+        android:singleLine="false"
 	   	
 	   	android:layout_below="@+id/LayConfirm_number"
-	    />
+        android:textAlignment="center"/>
 
 	<ImageView
 	    android:id="@+id/LayConfirm_red"
@@ -134,29 +126,95 @@
 	    android:layout_alignLeft="@+id/LayConfirm_cost_txt"
 	    android:layout_below="@+id/LayConfirm_cost_txt"
 	    android:src="@drawable/confirm_denied_btn"
-        android:onClick="denied_order"/>
+        android:onClick="denied_order"
+        android:layout_marginTop="5dp"/>
 	
 			
 	<ImageView
 	    android:id="@+id/LayConfirm_orange"
 	    android:layout_width="090dp"
 	    android:layout_height="090dp"
-	    android:layout_toRightOf="@+id/LayConfirm_red"
-	    android:layout_marginLeft="10dp"
-	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/confirm_change_btn"
-        android:onClick="edit_order"/>
+        android:src="@drawable/confirm_change_btn"
+        android:onClick="edit_order"
+        android:layout_alignTop="@+id/LayConfirm_red"
+        android:layout_toRightOf="@+id/LayConfirm_red"
+        android:layout_marginLeft="5dp"/>
 				
 	<ImageView
 	    android:id="@+id/LayConfirm_green"
 	    android:layout_width="90dp"
 	    android:layout_height="90dp"
-	    android:layout_toRightOf="@+id/LayConfirm_orange"
-	    android:layout_marginLeft="10dp"
-	    android:layout_below="@+id/LayConfirm_cost_txt"
-	    android:src="@drawable/confirm_order_btn"
-            android:onClick="accept_order"/>
-			
-	
-	
+        android:src="@drawable/confirm_order_btn"
+            android:onClick="accept_order"
+            android:layout_alignTop="@+id/LayConfirm_orange"
+            android:layout_toRightOf="@+id/LayConfirm_orange"
+            android:layout_marginLeft="5dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Город"
+            android:id="@+id/textView"
+            android:layout_below="@+id/LayConfirm_img_captio_car"
+            android:layout_alignLeft="@+id/LayConfirm_city"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Служба такси"
+            android:id="@+id/textView2"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_below="@+id/LayConfirm_city"
+            android:layout_alignLeft="@+id/LayConfirm_service"
+            android:layout_marginTop="5dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="От"
+            android:id="@+id/textView3"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_below="@+id/LayConfirm_service"
+            android:layout_alignLeft="@+id/LayConfirm_service"
+            android:layout_marginTop="5dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="До"
+            android:id="@+id/textView4"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_below="@+id/LayConfirm_from"
+            android:layout_alignLeft="@+id/LayConfirm_from"
+            android:layout_marginTop="5dp"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Комментарий"
+            android:id="@+id/textView5"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_below="@+id/LayConfirm_to"
+            android:layout_alignLeft="@+id/LayConfirm_to"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Телефон"
+            android:id="@+id/textView6"
+            android:textColor="@color/White"
+            android:textSize="20sp"
+            android:layout_below="@+id/LayConfirm_comment"
+            android:layout_alignLeft="@+id/LayConfirm_comment"
+            android:layout_marginTop="5dp"/>
+
+
 </RelativeLayout>
+</ScrollView>
