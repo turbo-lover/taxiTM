@@ -1,4 +1,4 @@
-package com.example.taksitm;
+package ru.tm.taxi;
 
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
@@ -144,6 +144,14 @@ public class My_Preferences_Worker
         sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
 
         return sPref.getString(preference_user_name,"");
+    }
+
+    public String get_value(String key)
+    {
+        ContextWrapper cw = new ContextWrapper(context);
+        sPref = cw.getSharedPreferences(preference_location, Context.MODE_PRIVATE);
+
+        return sPref.getString(key,"");
     }
 
 

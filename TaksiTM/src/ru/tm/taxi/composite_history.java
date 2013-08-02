@@ -1,4 +1,4 @@
-package com.example.taksitm;
+package ru.tm.taxi;
 
 import android.content.Context;
 import android.util.TypedValue;

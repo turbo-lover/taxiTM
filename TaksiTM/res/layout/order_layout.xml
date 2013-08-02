@@ -132,7 +132,6 @@
         android:layout_alignLeft="@+id/LayOrder_ed_txt_city"
         android:layout_below="@+id/LayOrder_ed_txt_comment"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="60dp"
         android:background="@drawable/text_input"
         android:hint="Телефон"
         android:inputType="phone"
