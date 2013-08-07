@@ -45,7 +45,7 @@ public class OrderLayout extends Activity implements TextWatcher
 
 
     private JSONObject orderJson;
-
+    private ArrayList<String> city_id_list;
 
 
     @Override
@@ -113,10 +113,19 @@ public class OrderLayout extends Activity implements TextWatcher
 
                 composite_order co_to = (composite_order) lin.getChildAt(0);
 
-                int id = Integer.parseInt(city);
-                city_spinner.setSelection(id-1);
+                try {
+                    int id = Integer.parseInt(city);
+                    city_spinner.setSelection(city_id_list.indexOf(id));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-                spr_service.setSelection(Integer.parseInt(service)-1);
+                try {
+                    int position = Integer.parseInt(service);
+                    spr_service.setSelection(services_Id.indexOf(position));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 from_auto_compl.setText(from);
                 et_from_corp.setText(from_corp);
@@ -175,6 +184,8 @@ public class OrderLayout extends Activity implements TextWatcher
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 entered_before = "";
+
+                spinner_load_services();
             }
 
             @Override
@@ -225,17 +236,17 @@ public class OrderLayout extends Activity implements TextWatcher
             // !  наполняем список городов
             spr.setAdapter(dataAdapter);
 
-            List<String> id_list = new ArrayList<String>();
+           city_id_list = new ArrayList<String>();
 
 
 
             for(int i=0; i<jsonArrayCity.length(); i++)
             {
                 JSONObject id = jsonArrayCity.getJSONObject(i);
-                id_list.add(id.getString("id"));
+                city_id_list.add(id.getString("id"));
             }
 
-            spr.setTag(id_list);
+            spr.setTag(city_id_list);
 
         }
         catch (Exception je)
@@ -543,7 +554,7 @@ public class OrderLayout extends Activity implements TextWatcher
 
         ArrayList<String> tag = (ArrayList<String>) city_spinner.getTag();
 
-        String city =tag.get(city_spinner.getSelectedItemPosition());
+        String city_id =tag.get(city_spinner.getSelectedItemPosition());
 
         String taxi_serv = services_Id.get(tx_serv.getSelectedItemPosition());
         String user_id = pw.get_user_id();
@@ -578,7 +589,7 @@ public class OrderLayout extends Activity implements TextWatcher
         {
             orderJson.put("destination",getDestination());
             orderJson.put("inception",get_inception());
-            orderJson.put("city_id", city_spinner.getSelectedItemPosition()+1);
+            orderJson.put("city_id", city_id);
             orderJson.put("service", taxi_serv);
             orderJson.put("user_id", user_id);
             orderJson.put("comment", comment);
@@ -616,7 +627,7 @@ public class OrderLayout extends Activity implements TextWatcher
 
             i.putExtra("destination", destination);
             i.putExtra("inception", inception);
-            i.putExtra("city", city);
+            i.putExtra("city", city_spinner.getSelectedItem().toString());
             i.putExtra("service", taxi_serv);
 
             i.putExtra("comment", comment);
@@ -632,24 +643,19 @@ public class OrderLayout extends Activity implements TextWatcher
 /////////////////////////////////////////////////////////////////////////////////
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode==0)
-        {
+        if(resultCode==0) {
             finish();
             return;
         }
-        if(resultCode == 2)
-        {
+        if(resultCode == 2) {
             JSONObject jsonObject = send_order_to_server();
-            try
-            {
-                if(ParseOrderResponse(jsonObject))
-                {
+            try {
+                if(ParseOrderResponse(jsonObject)) {
                     finish();
                 }
             }
-            catch (Exception ex)
-            {
-
+            catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
