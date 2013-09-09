@@ -33,7 +33,22 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
     final private String preference_user_name = "user_name";
     final private String preference_user_login = "user_login";
 
-    My_Preferences_Worker preferences_worker;
+    // Корпус
+    EditText _number_corp ;
+// Номер дома
+            EditText _number_home ;
+    // Имя
+    EditText _nameTextInput ;
+// Проверочный код из смс
+            EditText _passTextInput ;
+    // номер телефона
+    EditText _number ;
+// ввод улицы
+            AutoCompleteTextView mAutoComplete ;
+    // Номер города
+    Spinner sp ;
+
+            My_Preferences_Worker preferences_worker;
     private boolean FLAG = true;
 
     @Override
@@ -41,7 +56,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
 	{
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.relative_main);
 
         Initialize_vars();
 
@@ -64,13 +79,26 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         }
 
         spinner_load_cities();
-
-
-
 	}
 
     private void Initialize_vars() {
-        preferences_worker =new My_Preferences_Worker(this);
+
+        // Корпус
+       _number_corp =(EditText) findViewById(R.id.LayMain_txt_corp);
+    // Номер дома
+       _number_home =(EditText) findViewById(R.id.LayMain_txt_home);
+// Имя
+        _nameTextInput = (EditText) findViewById(R.id.txt_enter_name);
+// Проверочный код из смс
+        _passTextInput =(EditText) findViewById(R.id.txt_confirm_pass);
+// номер телефона
+        _number = (EditText) findViewById(R.id.LayMain_phone);
+// ввод улицы
+        mAutoComplete =(AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
+// Номер города
+        sp =(Spinner) findViewById(R.id.spinner_city);
+
+                preferences_worker =new My_Preferences_Worker(this);
 
         FLAG=true;
 
@@ -316,20 +344,8 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         //TODO 1) проверить была ли выпонена предыдущая функция, если нет выполнить и продолжить
 
     //получаем все текстовые поля
-        // Корпус
-        EditText _number_corp = (EditText) findViewById(R.id.LayMain_txt_corp);
-        // Номер дома
-        EditText _number_home = (EditText) findViewById(R.id.LayMain_txt_home);
-        // Имя
-        EditText _nameTextInput = (EditText) findViewById(R.id.txt_enter_name);
-        // Проверочный код из смс
-        EditText _passTextInput = (EditText) findViewById(R.id.txt_confirm_pass);
-        // номер телефона
-        EditText _number = (EditText) findViewById(R.id.LayMain_phone);
-        // ввод улицы
-        AutoCompleteTextView mAutoComplete = (AutoCompleteTextView) findViewById(R.id.LayMain_txt_street);
-        // Номер города
-        Spinner sp = (Spinner) findViewById(R.id.spinner_city);
+
+
 
 
     //достаем номер из маски
@@ -356,6 +372,7 @@ public class MainActivity extends Activity implements TextWatcher,OnClickListene
         String uid  = sPref.getString(preference_uid,"");
 
         //валидация поля
+
         My_AsyncTask_Worker d = new My_AsyncTask_Worker();
         JSONObject json = new JSONObject();
 

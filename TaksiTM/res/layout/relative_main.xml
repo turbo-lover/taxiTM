@@ -1,0 +1,287 @@
+<!--suppress AndroidDomInspection -->
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/White"
+        tools:context=".MainActivity"
+
+        >
+
+    <!--  
+    эти строчки были в корневом элементе
+      -->
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/relativeLayout"
+                >
+            <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+
+                    android:layout_marginTop="10dp"
+
+                    android:src="@drawable/logo"
+                    android:contentDescription="@string/description" />
+
+            <ImageView
+                    android:id="@+id/img_bibicar"
+                    android:layout_width="200dp"
+                    android:layout_height="65dp"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/img_logo"
+
+
+                    android:src="@drawable/bibicar"
+
+                    android:contentDescription="@string/description" />
+
+            <ImageView
+                    android:id="@+id/img_vopros"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+
+                    android:layout_below="@+id/img_logo"
+
+                    android:layout_marginTop="10dp"
+
+                    android:contentDescription="@string/description"
+
+                    android:src="@drawable/znak_v_apelsine"
+                    />
+
+            <ImageView
+                    android:id="@+id/img_text"
+
+
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+
+
+                    android:layout_alignLeft="@+id/img_bibicar"
+
+                    android:layout_toRightOf="@+id/img_vopros"
+                    android:layout_below="@+id/img_bibicar"
+                    android:layout_alignTop="@+id/img_vopros"
+
+                    android:contentDescription="@string/description"
+
+                    android:src="@drawable/pervii_ra_ne_pidoras"
+                    />
+<!-- - - - - ЛИНИЯ ВВОДА НОМЕРА -->
+            <TextView
+                    android:id="@+id/plus_seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="+7"
+                    android:layout_alignTop="@+id/LayMain_phone"
+                    android:layout_alignLeft="@+id/img_vopros"
+                    android:layout_marginTop="4dp"/>
+            <EditText
+                    android:layout_below="@+id/spinner_city"
+                    android:id="@+id/LayMain_phone"
+                    android:inputType="phone"
+                    android:layout_height="34dp"
+                    android:layout_width="200dp"
+                    android:background="@drawable/text_input"
+                    android:hint="@string/LayMain_hint_phone_number"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@+id/plus_seven"
+                    android:layout_toLeftOf="@+id/star1"
+                    android:layout_marginLeft="4dp"
+                   />
+            <ImageView
+                    android:id="@+id/star1"
+                    style="@style/Stars"
+                    android:contentDescription="@string/description"
+                    android:layout_alignTop="@+id/LayMain_phone"
+                    android:layout_alignRight="@+id/img_bibicar"/>
+<!-- - - - - ЗАПРОС КОДА В СМС -->
+            <TextView
+                    android:id="@+id/request_pass"
+                    android:layout_below="@id/LayMain_phone"
+                    android:textColor="@color/Orange"
+                    android:textAlignment="gravity"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/request_pass"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:singleLine="true"
+                    android:onClick="btn_RequestPass"
+                    android:clickable="true"
+                    android:gravity="center_horizontal"
+                    android:layout_alignLeft="@+id/plus_seven"/>
+<!-- - - - - ВВОД КОДА -->
+            <EditText
+                    android:layout_below="@+id/request_pass"
+                    android:id="@+id/txt_confirm_pass"
+                    android:inputType="number"
+                    android:layout_height="34dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/text_input"
+                    android:hint="@string/LayMain_hint_code"
+                    android:layout_toLeftOf="@+id/star1"
+                    android:layout_alignLeft="@+id/request_pass"
+                    android:layout_marginTop="4dp"/>
+
+            <ImageView
+                    android:id="@+id/star2"
+                    style="@style/Stars"
+                    android:contentDescription="@string/description"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/txt_confirm_pass"
+                    android:layout_alignTop="@+id/txt_confirm_pass"/>
+<!-- - - - - ВВОД ИМЕНИ -->
+            <EditText
+                    android:id="@+id/txt_enter_name"
+                    android:inputType="text"
+                    android:layout_height="34dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/text_input"
+                    android:hint="@string/LayMain_hint_name"
+
+                    android:layout_below="@+id/txt_confirm_pass"
+                    android:layout_alignRight="@+id/txt_confirm_pass"
+                    android:layout_alignParentEnd="false"
+                    android:layout_marginTop="4dp"/>
+
+            <ImageView
+                    android:id="@+id/star3"
+                    style="@style/Stars"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/description"
+                    android:layout_alignTop="@+id/txt_enter_name"
+                    android:layout_toRightOf="@+id/txt_enter_name"/>
+<!-- - - - - CITY -->
+            <Spinner
+                    android:id="@+id/spinner_city"
+                    android:layout_weight="4"
+                    android:inputType="text"
+                    android:layout_height="34dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/spinner_input"
+
+                    android:clickable="true"
+
+                    android:layout_alignLeft="@+id/txt_enter_name"
+                    android:layout_alignRight="@+id/txt_enter_name"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@+id/img_vopros"/>
+
+            <ImageView
+                    android:id="@+id/star4"
+                    style="@style/Stars"
+                    android:contentDescription="@string/description"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/spinner_city"
+                    android:layout_alignTop="@+id/spinner_city"/>
+
+            <AutoCompleteTextView
+                    android:id="@+id/LayMain_txt_street"
+
+                    android:enabled="true"
+
+                    android:layout_weight="4"
+                    android:textColor="@android:color/black"
+                    android:hint="@string/LayMain_hint_addr"
+                    android:layout_height="fill_parent"
+                    android:layout_width="fill_parent"
+                    android:background="@drawable/spinner_input"
+
+
+                    android:minHeight="34dp"
+                    android:layout_below="@+id/txt_enter_name"
+                    android:layout_alignRight="@+id/LayMain_phone"
+                    android:layout_marginTop="4dp"/>
+
+            <LinearLayout
+                    android:id="@+id/LinearLayout05"
+
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/LayMain_txt_street"
+                    android:layout_alignRight="@+id/LayMain_txt_street"
+                    android:layout_marginTop="4dp">
+
+
+
+                <EditText
+                        android:id="@+id/LayMain_txt_home"
+                        android:layout_weight="1"
+                        android:layout_width="100dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/text_input"
+                        android:hint="@string/LayMain_hint_addr_home">
+
+                </EditText>
+                <EditText
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/LayMain_txt_corp"
+                        android:layout_weight="1"
+                        android:layout_width="100dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/text_input"
+                        android:hint="@string/LayMain_hint_addr_corp">
+
+                </EditText>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/LinearLayout06"
+
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/LinearLayout05"
+                    android:layout_alignRight="@+id/LinearLayout05"
+                    android:layout_marginTop="4dp">
+
+                <Button
+                        android:id="@+id/btn_registration"
+                        android:layout_weight="1"
+                        android:layout_height="35dp"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/button_shape_1"
+                        android:text="@string/btn_main1_registr"
+                        android:clickable="true"
+                        android:onClick="btn_Register"
+                        style="@style/OrangeButton"
+                        />
+                <Button
+                        android:id="@+id/btn_enter"
+                        android:layout_weight="2"
+                        android:layout_height="35dp"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/button_shape_1"
+                        android:text="@string/btn_main1_enter"
+                        android:layout_marginLeft="10dp"
+                        android:onClick="btn_toEnterActivity"
+                        style="@style/OrangeButton"
+                        />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
